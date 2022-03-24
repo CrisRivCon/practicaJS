@@ -9,20 +9,24 @@
         <div class="container">     <!--Formulario-->
             <h1>Formulario de practica Javascript otra vez cambiado</h1>
             <form id="form_input">
+              <label for="form_input" class="col-sm-2 col-form-label">ID</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="form_input_0" value="1">
+              </div>
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="form_input_1" required>
+                    <label for="form_input_1">Nombre</label>
+                    <input type="text" class="form-control" id="form_input_1">
                 </div>
                 <div class="form-group">
-                    <label for="apellidos">Apellidos</label>
+                    <label for="form_input_2">Apellidos</label>
                     <input type="text" class="form-control" id="form_input_2">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="form_input_3">Email</label>
                     <input type="email" class="form-control" id="form_input_3" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <label for="genero">Genero</label>
+                    <label for="form_input_4">Genero</label>
                     <select class="form-control" id="form_input_4">
                         <option>Mujer</option>
                         <option>Hombre</option>
@@ -36,6 +40,7 @@
             <table class="table table-dark">
                 <thead>
                   <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Email</th>
@@ -59,8 +64,12 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
+                    <label for="form_input_0">ID</label>
+                    <input type="text" readonly class="form-control-plaintext" id="edit_input_0">
+                  </div>
+                  <div class="form-group">
                       <label for="nombre">Nombre</label>
-                      <input type="text" class="form-control" id="edit_input_1" required>
+                      <input type="text" class="form-control" id="edit_input_1">
                   </div>
                   <div class="form-group">
                       <label for="apellidos">Apellidos</label>
@@ -80,11 +89,10 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button id="guardar" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                    <button id="guardar_cambios" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
                   </div>
               </form>
               </div>
-          
             </div>
           </div>
       </div>
