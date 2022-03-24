@@ -6,74 +6,33 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container">
+        <div class="container">     <!--Formulario-->
             <h1>Formulario de practica Javascript otra vez cambiado</h1>
-            <form>
+            <form id="form_input">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="i1" required>
+                    <input type="text" class="form-control" id="form_input_1" required>
                 </div>
                 <div class="form-group">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" class="form-control" id="i2">
+                    <input type="text" class="form-control" id="form_input_2">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="i3" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="form_input_3" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="genero">Genero</label>
-                    <select class="form-control" id="i4">
+                    <select class="form-control" id="form_input_4">
                         <option>Mujer</option>
                         <option>Hombre</option>
                         <option>Otro</option>
                     </select>
                 </div>
-                    <button type="button" class="btn btn-primary" id="boton">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="boton_guardar">Agregar</button>
           </form>
         </div>
-        <div class="modal" tabindex="-1" id="ventana"> <!--Ventana modal-->
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Formulario de practica</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control c1" id="campM1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" class="form-control c1" id="campM2">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control c1" id="campM3" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="genero">Genero</label>
-                        <select class="form-control c1" id="campM4">
-                            <option>Mujer</option>
-                            <option>Hombre</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <button id="guardar" type="button" class="btn btn-primary" data-dismiss="modal">Guardar cambios</button>
-                    </div>
-                </form>
-                </div>
-            
-              </div>
-            </div>
-        </div>
-        <div id="tabla1" class="container"><!--Tabla-->
+        <div id="tabla1" class="container">   <!--Tabla-->
             <table class="table table-dark">
                 <thead>
                   <tr>
@@ -81,17 +40,58 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Email</th>
                     <th scope="col">Genero</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
         </div>
+        <div class="modal" tabindex="-1" id="modal_edit"> <!--Ventana modal-->
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Formulario de practica</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="edit_input_1" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="apellidos">Apellidos</label>
+                      <input type="text" class="form-control" id="edit_input_2">
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="edit_input_3" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group">
+                      <label for="genero">Genero</label>
+                      <select class="form-control" id="edit_input_4">
+                          <option>Mujer</option>
+                          <option>Hombre</option>
+                          <option>Otro</option>
+                      </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button id="guardar" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                  </div>
+              </form>
+              </div>
+          
+            </div>
+          </div>
+      </div>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     
         <script src="js.js"></script>
-          </body>
+    </body>
 </html>
