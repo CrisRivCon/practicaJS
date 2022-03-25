@@ -44,35 +44,29 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
     delBtn.innerHTML = "Eliminar";
     document.querySelector(("#elem_tabla_fila"+numFila)+":last-child").append(delBtn);
 
-    //delBtn.addEventListener('click', function(event){
-    //    let delFila = document.getElementById('elem_tabla_fila_' + numFila);
-    //})
-
     document.getElementById('form_input').reset();
-    let alert = document.getElementById('alerta_exito'); //Mostrar alerta si se ha añadido correctamente.
+    let alert = document.getElementById('alerta_agregar'); //Mostrar alerta si se ha añadido correctamente.
         alert.setAttribute('class', 'alert alert-success fade show');
+        alert.innerHTML = 'Agregada con exito.'
         alert.style.display = 'block';
         setTimeout(function(){
-          let alert = document.getElementById('alerta_exito');
+          let alert = document.getElementById('alerta_agregar');
           alert.setAttribute('class', 'alert alert-success fade in');
           alert.style.display = 'none';
         },3000);
 
     }else{
-        let alert = document.getElementById('alerta_sin_datos'); //Mostrar alerta si faltan datos
+        let alert = document.getElementById('alerta_agregar'); //Mostrar alerta si faltan datos
         alert.setAttribute('class', 'alert alert-warning fade show');
         alert.style.display = 'block';
+        alert.innerHTML = '<strong>Datos insuficientes</strong>, debes rellenar todos los campos.'
         setTimeout(function(){
-          let alert = document.getElementById('alerta_sin_datos');
+          let alert = document.getElementById('alerta_agregar');
           alert.setAttribute('class', 'alert alert-warning fade in');
           alert.style.display = 'none';
         },3000);
     }
 });
-//$('#alerta_sin_datos').on('close.bs.alert', function () {
-//    let alert = document.getElementById('alerta_sin_datos')
-//    alert.setAttribute('class', 'alert alert-warning fade hidden')
-//})
 
 // cuando se abra el modal de editar registro, insertar en los inoputs los vaalores que quieras
 //Con esto se podria solucionar
@@ -80,15 +74,12 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
 $('#modal_edit').on('show.bs.modal', function (event) {
     //console.log(event.relatedTarget.id)  //accedes a la propiedad id
     let numeFila = event.relatedTarget.id; //m1--elem_tabla_1
-    //let indexNum = event.dataset.indexNumber//-------------------------
     let regex = /(\d+)/g;
     let indexNum = numeFila.match(regex);
 
     for(let i=1;i<5;i++){
         let textoTabla = document.getElementById(numeFila+'_'+i);  // asi traemos el nombre de la fila 1
-        //let apellidos = document.getElementById(fila+'_2').innerHTML //apellido
-        //let email = document.getElementById(fila+'_3').innerHTML // genero ,almacenas todos los valores e insertas
-        //let genero = document.getElementById(fila+'_4').innerHTML
+        //almacenas todos los valores e insertas
         let campoEdit = document.getElementById('edit_input_'+i);
         campoEdit.dataset.indexNumber = indexNum;
         campoEdit.value = textoTabla.innerHTML;
