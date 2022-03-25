@@ -47,7 +47,7 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
 
     document.getElementById('form_input').reset();
     let alert = document.getElementById('alerta_agregar'); //Mostrar alerta si se ha añadido correctamente.
-        alert.setAttribute('class', 'alert alert-success fade show');
+        alert.setAttribute('class', 'alert alert-success ml-4 mt-3 fade show');
         alert.innerHTML = 'Agregada con exito.'
         alert.style.display = 'block';
         setTimeout(function(){
@@ -58,7 +58,7 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
 
     }else{
         let alert = document.getElementById('alerta_agregar'); //Mostrar alerta si faltan datos
-        alert.setAttribute('class', 'alert alert-warning fade show');
+        alert.setAttribute('class', 'alert alert-warning ml-4 mt-3 fade show');
         alert.style.display = 'block';
         alert.innerHTML = '<strong>Datos insuficientes</strong>, debes rellenar todos los campos.'
         setTimeout(function(){
