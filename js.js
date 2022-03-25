@@ -26,17 +26,18 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
     //EditBtn por ej
     let editBtn = document.createElement("button");//Crear boton modificar
     editBtn.setAttribute("id", "elem_tabla_"+numFila);
-    editBtn.setAttribute("class", "btn btn-secondary");
+    editBtn.setAttribute("class", "btn btn-secondary w-50");
     editBtn.setAttribute("type", "button");
     editBtn.setAttribute("data-toggle", "modal");
     editBtn.setAttribute("data-target", "#modal_edit");
     editBtn.setAttribute("data-index-number", numFila);//----------------------
     editBtn.innerHTML = "Editar";
     document.querySelector(("#elem_tabla_fila"+numFila)+":last-child").append(editBtn);
+    //document.querySelector(("#elem_tabla_fila"+numFila)+":last-child").setAttribute('class', 'text-center')
 
     let delBtn = document.createElement("button"); //Crear boton eliminar
     delBtn.setAttribute("id", "elem_tabla_del_"+numFila);
-    delBtn.setAttribute("class", "btn btn-danger");
+    delBtn.setAttribute("class", "btn btn-danger w-50");
     delBtn.setAttribute("type", "button");
     delBtn.setAttribute("data-toggle", "modal");
     delBtn.setAttribute("data-target", "#modal_eliminar");
