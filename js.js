@@ -6,7 +6,10 @@ var numFila = 0;
 saveBtn.addEventListener("click", function(event){  //Boton para guardar en la tabla la informacion de los input
     numFila++;
     //numeroBoton++;
-    if(document.getElementById("form_input_1").value !== ""){
+    let inputNombre = document.getElementById("form_input_1");
+    let inputApellidos = document.getElementById("form_input_2");
+    let inputEmail = document.getElementById("form_input_3");
+    if((inputNombre.value !== "")&&(inputApellidos.value !== "")&&(inputEmail.value !== "")){
     let fila = document.createElement("tr");
     fila.setAttribute("id", "elem_tabla_fila"+numFila);
     fila.setAttribute("data-index-number", 'fila'+numFila)
@@ -46,28 +49,30 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
     //})
 
     document.getElementById('form_input').reset();
+    let alert = document.getElementById('alerta_exito'); //Mostrar alerta si se ha añadido correctamente.
+        alert.setAttribute('class', 'alert alert-success fade show');
+        alert.style.display = 'block';
+        setTimeout(function(){
+          let alert = document.getElementById('alerta_exito');
+          alert.setAttribute('class', 'alert alert-success fade in');
+          alert.style.display = 'none';
+        },3000);
 
-    //id++;
-    //document.getElementById('form_input_0').setAttribute('value', id);
-    
-    /* editBtn.addEventListener("click", function(event){ 
-        for(let a = 1;a<5;a++){
-            let texto = document.getElementById("c"+numeroFila+a);
-            let campM = document.getElementById("campM"+a);
-            var textoT = texto.innerHTML;
-            campM.setAttribute("value", textoT);
-        };
-        let guardar = document.getElementById("guardar")
-        guardar.addEventListener("click", function(event){
-            for(let a = 1;a<5;a++){
-                let texto = document.getElementById("c"+numeroFila+a);
-                let campM = document.getElementById("campM"+a);
-                texto.innerHTML = campM.value;
-            };
-        });
-    }); */
-    };
+    }else{
+        let alert = document.getElementById('alerta_sin_datos'); //Mostrar alerta si faltan datos
+        alert.setAttribute('class', 'alert alert-warning fade show');
+        alert.style.display = 'block';
+        setTimeout(function(){
+          let alert = document.getElementById('alerta_sin_datos');
+          alert.setAttribute('class', 'alert alert-warning fade in');
+          alert.style.display = 'none';
+        },3000);
+    }
 });
+//$('#alerta_sin_datos').on('close.bs.alert', function () {
+//    let alert = document.getElementById('alerta_sin_datos')
+//    alert.setAttribute('class', 'alert alert-warning fade hidden')
+//})
 
 // cuando se abra el modal de editar registro, insertar en los inoputs los vaalores que quieras
 //Con esto se podria solucionar
@@ -77,7 +82,7 @@ $('#modal_edit').on('show.bs.modal', function (event) {
     let numeFila = event.relatedTarget.id; //m1--elem_tabla_1
     //let indexNum = event.dataset.indexNumber//-------------------------
     let regex = /(\d+)/g;
-    let indexNum = numeFila.match(regex)
+    let indexNum = numeFila.match(regex);
 
     for(let i=1;i<5;i++){
         let textoTabla = document.getElementById(numeFila+'_'+i);  // asi traemos el nombre de la fila 1
@@ -87,7 +92,7 @@ $('#modal_edit').on('show.bs.modal', function (event) {
         let campoEdit = document.getElementById('edit_input_'+i);
         campoEdit.dataset.indexNumber = indexNum;
         campoEdit.value = textoTabla.innerHTML;
-    }
+    };
   });
   var guardarCambios = document.getElementById('guardar_cambios');
   guardarCambios.addEventListener('click', function(event){
@@ -97,6 +102,14 @@ $('#modal_edit').on('show.bs.modal', function (event) {
         let textoTabla = document.getElementById('elem_tabla_'+numeID+'_'+i);
         textoTabla.innerHTML = campoEdit.value;
     };
+    //  let alert = document.getElementById('alerta_entrada_modificada'); //Mostrar alerta si se modifica
+    //  alert.setAttribute('class', 'alert alert-success fade show');
+    //  alert.style.display = 'block';
+    //  setTimeout(function(){
+    //    let alert = document.getElementById('alerta_entrada_modificada');
+    //    alert.setAttribute('class', 'alert alert-success fade in');
+    //    alert.style.display = 'none';
+    //  },3000);
   });
   $('#modal_eliminar').on('show.bs.modal', function (event) {
     let numeFila = event.relatedTarget.id;
@@ -111,6 +124,14 @@ $('#modal_edit').on('show.bs.modal', function (event) {
     let filaEliminada = document.getElementById('elem_tabla_fila'+numeFila);
     let padreFila = filaEliminada.parentNode;
     padreFila.removeChild(filaEliminada);
+    //let alert = document.getElementById('alerta_entrada_eliminada'); //Mostrar alerta si se elimina registro.
+    //    alert.setAttribute('class', 'alert alert-dark fade show');
+    //    alert.style.display = 'block';
+    //    setTimeout(function(){
+    //      let alert = document.getElementById('alerta_entrada_eliminada');
+    //      alert.setAttribute('class', 'alert alert-dark fade in');
+    //      alert.style.display = 'none';
+    //    },3000);
   });
 
 
