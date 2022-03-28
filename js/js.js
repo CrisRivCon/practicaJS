@@ -48,7 +48,7 @@ saveBtn.addEventListener("click", function(event){  //Boton para guardar en la t
     document.getElementById('form_input').reset();
     let alert = document.getElementById('alerta_agregar'); //Mostrar alerta si se ha añadido correctamente.
         alert.setAttribute('class', 'alert alert-success ml-4 mt-3 fade show');
-        alert.innerHTML = 'Agregada con exito.'
+        alert.innerHTML = 'Agregada con exito.';
         alert.style.display = 'block';
         setTimeout(function(){
           let alert = document.getElementById('alerta_agregar');
