@@ -9,19 +9,20 @@
         <div class="container" id="form_entrada">     <!--Formulario-->
             <h1>Formulario de practica</h1>
             <form id="form_input">
-                <div class="form-group">
+              <div class="row">
+                <div class="form-group col-12 col-md-3 col-lg-3">
                     <label for="form_input_1">Nombre</label>
                     <input type="text" class="form-control" id="form_input_1">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-12 col-md-3 col-lg-3">
                     <label for="form_input_2">Apellidos</label>
                     <input type="text" class="form-control" id="form_input_2">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-12 col-md-3 col-lg-3">
                     <label for="form_input_3">Email</label>
                     <input type="email" class="form-control" id="form_input_3" aria-describedby="emailHelp">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-12 col-md-3 col-lg-3">
                     <label for="form_input_4">Genero</label>
                     <select class="form-control" id="form_input_4">
                         <option>Mujer</option>
@@ -29,13 +30,17 @@
                         <option>Otro</option>
                     </select>
                 </div>
-                    <button type="button" class="btn btn-primary" id="boton_guardar">Agregar</button>
-          </form>
+                <div class="col-12" style="text-align: center;">
+                    <button type="button" style="margin: auto;" class="btn btn-primary" id="boton_guardar">Agregar</button>
+                  </div>
+                </div> 
+            </form>
         </div>
       </div>
       <div class="alert alert-warning data-alert fade in" role="alert" style="display: none;" id="alerta_agregar"> <!--alerta faltan datos-->
       </div>
-        <div id="tabla1" class="container mt-5">   <!--Tabla-->
+        <div id="tabla1" class="container mt-5">
+          <div class="table-responsive">  <!--Tabla-->
             <table class="table table-dark">
                 <thead>
                   <tr>
@@ -49,6 +54,7 @@
                 <tbody>
                 </tbody>
             </table>
+          </div>
         </div>
         <div class="alert alert-warning data-alert fade in" role="alert" style="display: none;" id="alerta_agregar"> <!--alerta faltan datos-->
         </div>

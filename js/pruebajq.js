@@ -40,11 +40,11 @@ $(function(){
                 'data-target':'#modal_eliminar',
                 'data-index-number':numFila,
                 'text':'Eliminar'
-            })
+            });
             lastCampo.append(btnEdit);
             lastCampo.append(btnDel);
             $("tbody").append(fila);
-            $("#form_input").trigger("reset") //resetear formulario
+            $("#form_input").trigger("reset"); //resetear formulario
             
             let alert = $("#alerta_agregar")
             alert.addClass("alert alert-success ml-4 mt-3 fade show")
@@ -66,7 +66,7 @@ $(function(){
             let alert = $("#alerta_agregar")
             alert.addClass('class', 'alert alert-danger fade in');
             alert.css("display", "none");
-          },3000);
+        },3000);
     };
     });
     $('#modal_edit').on('show.bs.modal',(event)=>{
@@ -96,14 +96,11 @@ $(function(){
         let indexNum = numeFila.match(regex);
         let eliminarConfirma = $('#confirmar_eliminar');
         eliminarConfirma.attr('data-index-number', indexNum);
-      });
+    });
 
-      $('#confirmar_eliminar').on('click',(event)=>{
+    $('#confirmar_eliminar').on('click',(event)=>{
         let numeFila = $("#confirmar_eliminar").attr('data-index-number');
-        $('#elem_tabla_fila'+numeFila).remove()
-        
-        //let padreFila = filaEliminada.parentNode;
-        //padreFila.removeChild(filaEliminada);
-      });
+        $('#elem_tabla_fila'+numeFila).remove();
+    });
 
 });
