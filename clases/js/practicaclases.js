@@ -50,3 +50,42 @@ class Alumno extends Persona{
     }
 
 }
+
+//-----------------------------Objeto literal------------------------------
+var alumnoJuan={
+    nombre:'Juan',
+    notaExamen1: 7,
+    notaExamen2:5,
+    notaExamen3:8,
+    notaMedia:function(puntosPositivos = 0){
+        return ((this.notaExamen1 + this.notaExamen2 + this.notaExamen3)/3)+puntosPositivos;
+    },
+    notasTrimestrales:{ //anidacion de objetos
+        1: {
+            trimestre: 'primer',
+            nota: 8
+        },
+        2: {
+            trimestre: 'segundo',
+            nota: 6
+        },
+        3: {
+            trimestre: 'tercer',
+            nota: 3
+        }
+    }
+
+}
+
+alumnoJuan.resultadosTercerTrimestre = function(){ //Extension
+    if(alumnoJuan.notasTrimestrales[3].nota >= 5){
+        console.log(alumnoJuan.nombre + " ha aprobado.")
+    }else{
+        console.log(alumnoJuan.nombre + " ha suspendido.")
+    }
+}
+
+console.log("La nota media de Juan es " + alumnoJuan.notaMedia());
+console.log("La nota media de Juan sumandole los positivos es " + alumnoJuan.notaMedia(1));
+console.log("La nota del segundo trimestre de "+ alumnoJuan.nombre+" es de "+ alumnoJuan.notasTrimestrales[2].nota);
+console.log(alumnoJuan.resultadosTercerTrimestre()); //Por que undefined despues de esto?
