@@ -1,4 +1,4 @@
-console.log('--------------------------Clases----------------------------')
+console.log('--------------------------Clases----------------------------');
 
 class Persona{
     constructor(nombre, apellidos, edad, altura, peso){
