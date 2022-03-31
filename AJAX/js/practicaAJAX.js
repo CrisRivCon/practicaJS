@@ -16,7 +16,8 @@ $(function(){
             $.ajax("https://jsonplaceholder.typicode.com/comments",{
                 dataType: 'json',
                 success: function (data){ 
-                        $('.card-body').eq(n).append(`<p><b>Comentario: </b></p><p>${data[n].body}</p>`);
+                        $('.card-body').eq(n).append("<p><b>Comentario:</b></p>"+
+                            "<p>"+ data[n].body+"</p>");
                 },
                 error: function (jqXHR, texStatus, error){ 
                     $('.card-body').eq(n).append("<p>"+"Error: " + texStatus + " " + error+"</p>")
