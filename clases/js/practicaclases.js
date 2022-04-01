@@ -1,36 +1,67 @@
 console.log('--------------------------Clases----------------------------');
 
 class Persona{
+    #nombre; 
+    #apellidos=""; 
+    #edad=""; 
+    #altura=""; 
+    #peso="";
+    static contador = 1;
     constructor(nombre, apellidos, edad, altura, peso){
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.altura = altura;
-        this.peso = peso;
+        this.#nombre = nombre;
+        this.#apellidos = apellidos;
+        this.#edad = edad;
+        this.#altura = altura;
+        this.#peso = peso;
+        Persona.setContador();
         //this.imc = imc;
-        if(Persona.contador) {
-            Persona.contador++;
-          } else {
-            Persona.contador = 1;
-          }
+      //  if(Persona.contador) {
+       //     Persona.contador++;
+       //   } else {
+       //     Persona.contador = 1;
+       //     }
+     }
+    static setContador() {
+        return ++Persona.contador;
+    }
+    static getContador(){
+        console.log(Persona.contador);
+        return Persona.contador
+
     }
     get IMC(){
-        return this.peso / this.altura;
+        return this.#peso / this.#altura;
     }
+    getNombre(){
+        return this.#nombre
+    }
+    getApellidos(){
+        return this.#apellidos
+    }
+    getEdad(){
+        return this.#edad
+    }
+    getAltura(){
+        return this.#altura
+    }
+    getPeso(){
+        return this.#peso
+    }
+
     set nuevoPeso(valor){
-        this.peso = valor;
+        this.#peso = valor;
     }
     hablar(){
-        console.log(this.nombre+" está hablando");
+        console.log(this.#nombre+" está hablando");
     }
     andar(){
-        console.log(this.nombre+" anda");
+        console.log(this.#nombre+" anda");
     }
     comer(){
         console.log("Se va a comer sushi");
     }
     fichaCompleta(){ //Metodo para ver todas las propiedades?
-        console.log('Nombre: '+ this.nombre + ', Apellidos: ' + this.apellidos +', Edad: ' + this.edad + ', Altura: ' + this.altura + ', Peso: ' + this.peso + ', IMC: ' + this.IMC);
+        console.log('Nombre: '+ this.#nombre + ', Apellidos: ' + this.#apellidos +', Edad: ' + this.#edad + ', Altura: ' + this.#altura + ', Peso: ' + this.#peso + ', IMC: ' + this.IMC);
     }
 
 }
@@ -49,6 +80,7 @@ class Profesor extends Persona{
     }
 
 }
+
 class Alumno extends Persona{
     constructor(nombre, apellidos, edad, altura, peso, idAlumno, notaMedia){
         super(nombre, apellidos, edad, altura, peso);
@@ -65,27 +97,35 @@ class Alumno extends Persona{
 }
 
 const profesoraAna = new Persona('Ana', 'García', 29, 1.60, 60);
-console.log('El peso de ' + profesoraAna.nombre + ' es de ' + profesoraAna.peso);
-console.log('El IMC de ' + profesoraAna.nombre + ' es de ' + profesoraAna.IMC);
+const profesorPepe = new Persona('Pepe', 'García', 29, 1.60, 60);
+console.log('El peso de ' + profesoraAna.getNombre() + ' es de ' + profesoraAna.getPeso());
+console.log('El IMC de ' + profesoraAna.getNombre() + ' es de ' + profesoraAna.IMC);
 profesoraAna.nuevoPeso = 70;
-console.log('El peso de ' + profesoraAna.nombre + ' es de ' + profesoraAna.peso);
-console.log('El IMC de ' + profesoraAna.nombre + ' es de ' + profesoraAna.IMC);
+console.log('El peso de ' + profesoraAna.getNombre() + ' es de ' + profesoraAna.getPeso());
+console.log('El IMC de ' + profesoraAna.getNombre + ' es de ' + profesoraAna.IMC);
 profesoraAna.fichaCompleta();
-console.log('Se han instanciado '+ Persona.contador + ' personas.');
+console.log('Se han instanciado '+ Persona.getContador() + ' personas.');
 
 const alumnoJavi = new Alumno('Javi','Lopez', '15', '1.40', '50', '123', '9')
 alumnoJavi.fichaCompleta();
-console.log('Se han instanciado '+ Persona.contador + ' personas.');
+console.log('Se han instanciado '+ Persona.getContador() + ' personas.');
 console.log('--------------------------Objeto literal----------------------------');
 
 //-----------------------------Objeto literal------------------------------
 var alumnoJuan={
     nombre:'Juan',
-    notaExamen1: 7,
-    notaExamen2: 5,
-    notaExamen3: 8,
-    notaMedia:function(puntosPositivos = 0){
-        return ((this.notaExamen1 + this.notaExamen2 + this.notaExamen3)/3)+ puntosPositivos;
+    arrayNotas:[
+        8,
+        7,
+        3
+    ],
+    notaMedia:function(){
+        let suma = 0;
+        let numNotas = this. arrayNotas.length
+        for (const key in this.arrayNotas) {
+            suma += this.arrayNotas[key];  
+        }
+        return (suma/numNotas);
     },
     notasTrimestrales:{ //anidacion de objetos
         1: {
@@ -111,8 +151,7 @@ alumnoJuan.resultadosTercerTrimestre = function(){ //Extension
     }
 }
 
-console.log("La nota media de Juan es " + alumnoJuan.notaMedia());
-console.log("La nota media de Juan sumandole los positivos es " + alumnoJuan.notaMedia(1));
+console.log("La nota media de Juan es " + alumnoJuan.notaMedia().toFixed(2));
 console.log("La nota del segundo trimestre de "+ alumnoJuan.nombre+" es de "+ alumnoJuan.notasTrimestrales[2].nota);
 console.log(alumnoJuan.resultadosTercerTrimestre());
 console.log('No entiendo por que undefined');
