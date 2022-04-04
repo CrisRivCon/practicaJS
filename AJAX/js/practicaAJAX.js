@@ -53,7 +53,6 @@ $.ajax({
     $('.mostrar').click((event)=>{
 
         let cardNum = event.currentTarget.dataset.id;
-        console.log(cardNum)
         let numRandom = Math.round(Math.random()*10)
         let urlUsers = "https://jsonplaceholder.typicode.com/users?id=" + numRandom
         let urlComments = "https://jsonplaceholder.typicode.com/comments?id=" + numRandom
