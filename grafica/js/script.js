@@ -15,14 +15,14 @@ chartBtn.addEventListener('click', event =>{
         if (window.data) { //limpiar la grafica.
             window.data.clear();
             window.data.destroy();
-        }
+        };
         let dataNum=[];  
 
         let labels = range(1, arrayLength, 1);
 
         for (let n = 0; n<=arrayLength;n++){ //crear array de num aleatorios.
             let randomNum = random(1, 100);
-            dataNum.push(randomNum)
+            dataNum.push(randomNum);
         };
 
         window.data = new Chart (ctx, { //crear grafica
@@ -49,5 +49,4 @@ chartBtn.addEventListener('click', event =>{
             inputNum.classList.remove('is-invalid');
         }, 2000);
     };
-
 });
