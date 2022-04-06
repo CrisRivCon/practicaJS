@@ -20,6 +20,13 @@ const media=()=>{
     };
     return (suma/numValores);
  };
+ const valorMedia = ()=>{
+    if(Number.isInteger(media())){
+        return media()
+    }else{
+        return media().toFixed(2)
+    };
+};
 //funcion para crear array para labels del rango del numero de valores.
 //const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
 //labels = range(1, arrayLength, 1);
@@ -60,7 +67,8 @@ chartBtn.addEventListener('click', event =>{
                 }]
             },
         });
-        mediaCardBody.innerHTML=`La media de valores es: ${media().toFixed(2)}`;
+
+        mediaCardBody.innerHTML=`La media de valores es: ${valorMedia()}`;
         mediaCard.classList.remove('d-none');
         mediaCard.classList.add('d-block');
 
