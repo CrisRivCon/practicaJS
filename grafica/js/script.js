@@ -28,7 +28,7 @@ const media=()=>{
 //};
 
 chartBtn.addEventListener('click', event =>{
-
+    let arrayLength = Number(inputNum.value);
     if(arrayLength<=20&&arrayLength>=5){
         if (window.data) { //limpiar la grafica.
             dataNum = [];
@@ -62,6 +62,7 @@ chartBtn.addEventListener('click', event =>{
         mediaCardBody.innerHTML=`La media de valores es: ${media().toFixed(2)}`;
         mediaCard.classList.remove('d-none');
         mediaCard.classList.add('d-block');
+
     }else{ //alerta de numero fuera de rango.
         let invalidNum = document.getElementById('invalid_num_text');
         invalidNum.classList.remove('d-none');
