@@ -3,9 +3,10 @@ let chartBtn = document.getElementById('crearGrafica');
 let inputNum = document.getElementById('inputNumber');
 let mediaCard = document.getElementById('media_card');
 let mediaCardBody = document.getElementById('media_card_body');
-let arrayLength = Number(inputNum.value);
+let arrayLength;
 let dataNum=[]; 
 let labels=[];
+
 let randomNum;
 
 const random =  (min, max) => { //funcion para crear los numeros aleatorios.
@@ -28,7 +29,7 @@ const media=()=>{
 //};
 
 chartBtn.addEventListener('click', event =>{
-    let arrayLength = Number(inputNum.value);
+    arrayLength = Number(inputNum.value);
     if(arrayLength<=20&&arrayLength>=5){
         if (window.data) { //limpiar la grafica.
             dataNum = [];
