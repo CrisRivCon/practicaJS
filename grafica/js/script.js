@@ -59,7 +59,7 @@ chartBtn.addEventListener('click', event =>{
                 }]
             },
         });
-        mediaCardBody.innerHTML=`La media de valores es: ${media()}`;
+        mediaCardBody.innerHTML=`La media de valores es: ${media().toFixed(2)}`;
         mediaCard.classList.remove('d-none');
         mediaCard.classList.add('d-block');
     }else{ //alerta de numero fuera de rango.
