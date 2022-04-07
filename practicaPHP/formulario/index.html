@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <h3>FORMULARIO PHP</h3>
-        <form action="formulario.php" method="get" class="mt-5">
+        <form action="formulario.php" method="post" class="mt-5">
             <div class="form-row">
                 <div class="col-6">
                     <label for="name">Name</label>
@@ -49,7 +49,7 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary col-3">Submit</button>
+                <input type="submit" class="btn btn-primary col-3" name="submit" value="Submit">
             </div>
         </form>
     </div>
