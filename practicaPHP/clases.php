@@ -18,6 +18,16 @@
             $this->peso = $peso;
         }
     }
+    class Coche extends Vehiculos{
+        public function __construct($velocidadMax, $puertas)
+        {
+            $this->velocidadMax = $velocidadMax;
+            $this->puertas = $puertas;
+        }
+        public function setPuertas($puertas){
+            $this->puertas = $puertas;
+        }
+    }
     echo 'Hola que tal';
 
     $nuevoCoche = new Vehiculos(30, 'azul', 2);
