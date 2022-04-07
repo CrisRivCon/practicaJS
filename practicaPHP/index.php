@@ -1,5 +1,5 @@
 <?php
-include 'prueba3.php';
+include 'clases.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
