@@ -1,5 +1,5 @@
 <?php
-    //require_once 'prueba1.php';
+    require 'variablesPredefinidas.php';
 
     class Vehiculos
     {
