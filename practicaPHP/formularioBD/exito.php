@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,11 @@
     <div class="container mt-5">
         <div class="card mt-5">
             <h5 class="card-header text-info d-flex justify-content-between">Usuario añadido con exito</h5>
-            <div class="card-body text-info">El usuario ha sido añadido a la base de datos.</div>
+            <div class="card-body text-info">
+                <p>El usuario ha sido añadido a la base de datos.</p>
+                <p>Nombre usuario: <?php echo $_SESSION['logged_in_user_name'],' ', $_SESSION['logged_in_user_last_name'];?></p>
+                <p>Fecha de nacimiento: <?php echo $_SESSION['logged_in_user_fecha_nacimiento'];?></p>
+            </div>
             <div class="card-footer">
             <a data-id="0" href="index.php" class="btn btn-info">Volver</a>
             </div>

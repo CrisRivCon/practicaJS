@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    unset($_SESSION['logged_in_user_name']);
+    unset($_SESSION['logged_in_user_last_name']);
+    unset($_SESSION['logged_in_user_fecha_nacimiento']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
