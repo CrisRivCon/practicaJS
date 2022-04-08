@@ -1,8 +1,5 @@
 <?php
     require 'conexionBD.php';
-
-    header('Location: /pruebaPHP/Practicas/practicaPHP/formularioBD/exito.php');
-
     
     $firstName = $_POST['name'];
     $lastName = $_POST['last_name'];
@@ -19,6 +16,8 @@
     $_SESSION['logged_in_user_name'] = $firstName;
     $_SESSION['logged_in_user_last_name'] = $lastName;
     $_SESSION['logged_in_user_fecha_nacimiento'] = $fechaNacimiento;
+
+    header('Location: /pruebaPHP/Practicas/practicaPHP/formularioBD/exito.php');
 
     //setcookie( "TestCookie", $firstName, time()+600 );
 
