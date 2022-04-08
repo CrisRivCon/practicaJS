@@ -9,19 +9,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container mt-5">
-        <h3>FORMULARIO PHP</h3>
+    <div class="container mt-5 bg-light border border-info">
+        <h3 class="text-center text-info mt-5">FORMULARIO PHP</h3>
         <form action="insertar1.php" method="post" class="mt-5">
             <div class="form-row">
                 <div class="col-6">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <label for="name" class="text-info">Name</label>
+                    <input type="text" class="form-control border border-info text-secondary" name="name">
                 </div>
                 <div class="col-6">
-                    <label for="last_name">Last name</label>
-                    <input type="text" class="form-control" name="last_name">
+                    <label for="last_name" class="text-info">Last name</label>
+                    <input type="text" class="form-control border border-info text-secondary" name="last_name">
                 </div>
-                <input type="submit" class="btn btn-primary col-3 offset-4 mt-5" name="submit" value="Submit">
+                <div class="col-10 col-md-7 mt-5 offset-2 offset-md-4 ">
+                    <label for="fecha_nacimiento" class="text-info">Fecha nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" class="border border-info text-secondary" name="fecha_nacimiento">
+                </div>
+                <!--<div class="col-6 mt-5">
+                    <label for="last_update">Last update:</label>
+                    <input type="datetime" id="last_update" name="last_update" value="">
+                </div>-->
+                <input type="submit" class="btn btn-info col-3 mx-auto my-5" name="submit" value="Submit">
             </div>
         </form>
     </div>
