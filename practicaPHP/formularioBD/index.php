@@ -21,15 +21,15 @@
             <div class="form-row">
                 <div class="col-6">
                     <label for="name" class="text-info">Name</label>
-                    <input type="text" class="form-control border border-info text-secondary" name="name" required>
+                    <input type="text" class="form-control border border-info text-secondary" name="name" >
                 </div>
                 <div class="col-6">
                     <label for="last_name" class="text-info">Last name</label>
-                    <input type="text" class="form-control border border-info text-secondary" name="last_name" required>
+                    <input type="text" class="form-control border border-info text-secondary" name="last_name" >
                 </div>
                 <div class="col-10 col-md-7 mt-5 offset-2 offset-md-4 ">
                     <label for="fecha_nacimiento" class="text-info">Fecha nacimiento:</label>
-                    <input type="date" id="fecha_nacimiento" class="border border-info text-secondary" name="fecha_nacimiento" required>
+                    <input type="date" id="fecha_nacimiento" class="border border-info text-secondary" name="fecha_nacimiento" >
                 </div>
                 <!--<div class="col-6 mt-5">
                     <label for="last_update">Last update:</label>
