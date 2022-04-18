@@ -25,15 +25,21 @@ $('.ver-peliculas').on('click', (event)=>{
 })*/
 
 var url = 'verPeliculas.php';
-var data = {actor_id: idFila};
+//const data = new FormData();
+//data.append('actor_id', idFila);
 
 fetch(url, {
   method: 'POST', // or 'PUT'
-  body: JSON.stringify(data), // data can be `string` or {object}!
-  headers:{
-    'Content-Type': 'application/json'
-  }
-}).then(res => res.json())
+  body: JSON.stringify({actor_id: idFila}) // data can be `string` or {object}!
+/*   headers:{
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  } */
+}).then(response =>{
+    let resp = JSON.stringify(response)
+    res = JSON.parse(resp)
+    console.log(res)
+  })
 .catch(error => console.error('Error:', error))
 .then(data => {
   console.log(data);
@@ -60,6 +66,7 @@ fetch(url, {
     </tr>`;
     //document.querySelector('.card-body').innerHTML = datos;
   }
+  
   
 });
 });
