@@ -12,7 +12,8 @@ fetch(url, {
   body: data,
 })
 .then(function(response) {
-  if(response.ok) {
+  console.log(response);
+  if(response.status==200) {
        return response.json();
   } else {
       throw "Error en la llamada AJAX";
@@ -20,9 +21,12 @@ fetch(url, {
 })
 .then(function(data) {
   console.log(data);
-   for(item in data){
-    console.log(data[item]);
-  } 
+
+    for(item in data){
+      console.log(data[item]);
+    } 
+
+   
 })
 .catch(function(err) {
   console.log(err);
