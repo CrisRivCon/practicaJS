@@ -246,9 +246,8 @@ require 'miDB.php';
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    foreach ($_SESSION['pelis'] as $pelicula) {
-                      var_dump($pelicula);
+               <?php
+                    /* foreach ($_SESSION['listaPeliculas'] as $pelicula) {
                       echo "<tr>
                                 <th scope=\"row\">".$pelicula['film_id']."</th>
                                 <td class=\"".$pelicula['film_id']."\">".$pelicula['title']."</td>
@@ -267,8 +266,8 @@ require 'miDB.php';
                                     </div>
                                 </td>
                               </tr>";
-                      }
-                  ?>
+                      } */
+                  ?> 
                 </tbody>
               </table>
         </div>
