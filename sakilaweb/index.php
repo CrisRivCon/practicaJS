@@ -1,7 +1,7 @@
 <?php
+
 session_start();
 require 'miDB.php';
-
     $data = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
     /*foreach ($data as $row) {
         echo $row['first_name']."<br />\n";
