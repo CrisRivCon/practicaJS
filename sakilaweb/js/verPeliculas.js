@@ -1,4 +1,27 @@
-var btnVerPeliculas = document.getElementsByClassName('verPeliculas');
+//var btnVerPeliculas = document.getElementById('ver-peliculas');
+
+$('.ver-peliculas').on('click', (event)=>{
+  let idFila = event.currentTarget.id;
+  //btnVerPeliculas.setAttribute('data-id', idFila);
+  //let idFilm = btnVerPeliculas.dataset.id;
+
+  const data = new FormData();
+  data.append('film_id', idFila)
+
+  fetch('verPeliculas.php', {
+      method: 'POST',
+      body: data
+  })
+  .then(function(response) {
+      if(response.ok) {
+          return response.text()
+      } else {
+          throw "Error en la llamada Ajax";
+      }
+   })
+   .then(data => console.log(data))
+   .catch(err => console.log(err));
+})
 //var idValue = document.getElementById("inputId").value;
 //var urlUser = "https://jsonplaceholder.typicode.com/users?id="+idValue;
 /* btnSearch.addEventListener('click', event =>{
