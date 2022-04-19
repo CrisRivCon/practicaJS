@@ -33,7 +33,7 @@ require 'miDB.php';
                   <a class="nav-link text-light" href="pelis.html">Peliculas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
+                  <a class="nav-link text-light ver-peliculas" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
                 </li>
               </ul>
               <!--<form class="form-inline my-2 my-lg-0">
@@ -150,13 +150,13 @@ require 'miDB.php';
         <div class="modal-body">
             <div class="row mt-3 justify-content-md-around" id="formulario">
                 <form class="m-3">
-                    <select class="custom-select bg-info text-white" size="3">
+                    <select class="custom-select bg-info text-white" size="3" id="actor">
                         <option selected>Selecciona un actor</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-                    <select class="custom-select bg-info text-white mt-5" size="3">
+                    <select class="custom-select bg-info text-white mt-5" size="3" id="film">
                         <option selected>Selecciona una pelicula</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
