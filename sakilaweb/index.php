@@ -278,6 +278,59 @@ require 'miDB.php';
       </div>
     </div>
   </div>
+  <!-- Modal desasignar pelicula -->
+  <div class="modal fade" id="desasignar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Desasignar Pelicula</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-light text-muted">
+                <p>¿Seguro que quieres eliminarla?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" id="desasignar-pelicula" class="btn btn-danger" data-dismiss="modal">ELIMINAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal editar pelicula 
+  <div class="modal fade" id="editar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Pelicula</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row mt-3 justify-content-md-around" id="formulario">
+              <form class="m-3" id="form_editar_pelicula">
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted" for="validationDefault01">Title</label>
+                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault02">Release Year</label>
+                    <input type="text" class="form-control bg-info text-white" name="release_year" id="validationDefault02" required>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" id="actualizar-pelicula" class="btn btn-info" data-dismiss="modal">Actualizar</button>
+        </div>
+      </div>
+    </div>-->
+  </div>
   
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

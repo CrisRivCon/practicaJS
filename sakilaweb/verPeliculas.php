@@ -3,7 +3,6 @@ session_start();
 require 'miDB.php';
 
 
-$id=true;
     if(isset($_POST['actor_id'])){
 
         //$_SESSION['listaPeliculas'] = $myDB->query("SELECT film_id, title, release_year FROM film WHERE film_id IN(SELECT film_id FROM film_actor WHERE actor_id=".$id.")")->fetchAll();

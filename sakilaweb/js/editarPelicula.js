@@ -1,4 +1,4 @@
-let btnActualizar = document.getElementById("editar-pelicula");
+let btnActualizar = document.getElementById("actualizar-pelicula");
 //Rellenar formulario con datos de la tabla
 $('.editar-pelicula').on('click', (event)=>{
     let idFila = event.currentTarget.id;
@@ -11,10 +11,10 @@ $('.editar-pelicula').on('click', (event)=>{
 
 //Enviar los datos para insertarlos en la BD
 btnActualizar.addEventListener("click", event=>{
-    const data = new FormData(document.getElementById("form_editar_actor"));
-    let idActor = btnActualizar.dataset.id;
-    data.append('actor_id', idActor);
-    fetch('actualizarActor.php', {
+    const data = new FormData(document.getElementById("form_editar_pelicula"));
+    let idPelicula = btnActualizar.dataset.id;
+    data.append('film_id', idPelicula);
+    fetch('actualizarPelicula.php', {
         method: 'POST',
         body: data
     })
@@ -29,10 +29,10 @@ btnActualizar.addEventListener("click", event=>{
      })
      .then(myjson => {
         console.log(json);
-        for (const key in $('td.'+idActor)) {
-            const element = $('td.'+idActor)[key];
+        for (const key in $('td.'+idPelicula)) {
+            const element = $('td.'+idPelicula)[key];
             console.log(data);
-            //element.innerHTML = $('#editar_actor input')[key].value;
+            //element.innerHTML = $('#editar_Pelicula input')[key].value;
            // document.querySelector('.card-body').innerHTML = datos;
         }
     }) */
