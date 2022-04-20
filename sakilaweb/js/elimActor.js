@@ -24,7 +24,7 @@ btnEliminar.addEventListener("click", event=>{
         }
      })
      .then(data =>{
-         let fila = document.getElementById(data['actor_id']);
+         let fila = document.getElementById("f"+data['actor_id']);
          fila.remove();
      })
      .catch(function(err) {

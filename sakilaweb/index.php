@@ -99,8 +99,8 @@ require 'miDB.php';
                 </tbody>
               </table>
         </div>
-        <div class="row mt-3 justify-content-md-around" id="formulario">
-            <form class="m-3" id="form_insertar_actor" method="post" action="insertarActor.php">
+        <div class="row mt-3 justify-content-md-around" id="form_insert_actor">
+            <form class="m-3" id="form_insertar_actor" method="post" action="insertarActor.php" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">First name</label>
@@ -110,6 +110,10 @@ require 'miDB.php';
                     <label for="validationDefault02">Last name</label>
                     <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" minlength="4" maxlength="10" required>
                   </div>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input bg-info text-white" id="form_img" accept="image/*" required>
+                  <label class="custom-file-label bg-info text-white preview" for="customFile" >Selecciona una imagen...</label>
                 </div>
                 <!--<div class="form-row">
                   <div class="col-md-6 mb-3">
@@ -127,11 +131,10 @@ require 'miDB.php';
                     <label class="text-muted" for="validationDefault05">Zip</label>
                     <input type="text" class="form-control bg-info text-white" id="validationDefault05" required>
                   </div>-->
-                </div>
                 <div class="text-center">
                     <input class="btn btn-info my-3" type="submit" name="submit" id="insertar_actor" value="Añadir Actor">
                 </div>
-              </form>
+            </form>
         </div>
         <div class="row mt-3" id="pie">
 
@@ -342,8 +345,9 @@ require 'miDB.php';
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script src="js/editActor.js"></script>
-    <script src="js/eliActor.js"></script>
+    <script src="js/elimActor.js"></script>
     <script src="js/verPelis.js"></script>
     <script src="js/asignarPelicula.js"></script>
-</body>
+<!--     <script src="js/insertarActor.js"></script>
+ --></body>
 </html>
