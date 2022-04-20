@@ -3,6 +3,8 @@
 session_start();
 require 'miDB.php';
     $data = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
+    $dataActor = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id LIMIT 30")->fetchAll();
+    $dataFilm = $myDB->query("SELECT film_id, title FROM film ORDER BY film_id LIMIT 30")->fetchAll();
     /*foreach ($data as $row) {
         echo $row['first_name']."<br />\n";
     }*/
@@ -19,7 +21,7 @@ require 'miDB.php';
 <body>
     <div class="container bg-light">
         <nav class="navbar navbar-expand-lg navbar-dark bg-info pt-3 pb-3">
-            <a class="navbar-brand text-light" href="index.html">Actores</a>
+            <a class="navbar-brand text-light" href="index.php">Actores</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon text-muted"></span>
             </button>
@@ -27,13 +29,13 @@ require 'miDB.php';
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
                 <li class="nav-item active">
-                  <a class="nav-link text-light" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-light" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="pelis.html">Peliculas</a>
+                  <a class="nav-link text-light" href="#">Peliculas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light ver-peliculas" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
+                  <a class="nav-link text-light" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
                 </li>
               </ul>
               <!--<form class="form-inline my-2 my-lg-0">
@@ -149,25 +151,29 @@ require 'miDB.php';
         </div>
         <div class="modal-body">
             <div class="row mt-3 justify-content-md-around" id="formulario">
-                <form class="m-3">
+                <form class="m-3" id="form_asignar_pelicula">
                     <select class="custom-select bg-info text-white" size="3" id="actor">
                         <option selected>Selecciona un actor</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php
+                          foreach ($dataActor as $row) {
+                              echo "<option value=\"".$row['actor_id']."\">".$row['last_name'].", ".$row['first_name']."</option>";
+                          }
+                        ?>
                     </select>
                     <select class="custom-select bg-info text-white mt-5" size="3" id="film">
                         <option selected>Selecciona una pelicula</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php
+                          foreach ($dataFilm as $row) {
+                              echo "<option value=\"".$row['film_id']."\">".$row['title']."</option>";
+                          }
+                        ?>
                     </select>
                 </form>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-info">Asignar</button>
+          <button type="button" name="submit" id="btn_asignar" class="btn btn-info" data-dismiss="modal">Asignar</button>
         </div>
       </div>
     </div>
@@ -338,20 +344,6 @@ require 'miDB.php';
     <script src="js/editarActor.js"></script>
     <script src="js/eliActor.js"></script>
     <script src="js/verPelis.js"></script>
-      <!--  var btnVerPeliculas = document.getElementsByClassName('verPeliculas');
-      for (const key in btnVerPeliculas) {
-        key.addEventListener('click', event =>{
-        let idValue = key.dataset.id;
-        fetch(urlUser)
-            .then(response => response.json())
-            .then(data => {
-                let datos = `<p><b>Nombre:</b> ${data[0].name} </p>
-                <p><b>Nombre de usuario:</b> ${data[0].username} </p>
-                <p><b>Email:</b> ${data[0].email} </p>`;
-                document.querySelector('.card-body').innerHTML = datos;
-            });
-      });
-      }
-    </script> -->
+    <script src="js/asignarPelicula.js"></script>
 </body>
 </html>
