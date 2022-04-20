@@ -9,7 +9,7 @@ if(isset($_POST['actor_id']) && isset($_POST['film_id'])){
     $stmt->execute([$_POST['actor_id'], $_POST['film_id']]);
     if($stmt->rowCount() > 0)
             {
-            echo $_POST['film_id'];
+                echo json_encode($_POST);
             }
             else{
                 echo "console.log('No se pudo eliminar el registro')";

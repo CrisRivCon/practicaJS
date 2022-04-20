@@ -11,7 +11,6 @@ fetch(url, {
   body: data,
 })
 .then(function(response) {
-  console.log(response);
   if(response.status==200) {
        return response.json();
   } else {
@@ -99,7 +98,6 @@ btnDesasignar.addEventListener("click", event=>{
     let idPelicula = btnDesasignar.dataset.id;
     var regex = /(\d+)/g;
 
-    console.log(idPelicula.match(regex));
     let  idFilm = idPelicula.match(regex)[0];
     let  idActor = idPelicula.match(regex)[1];
 
@@ -109,17 +107,18 @@ btnDesasignar.addEventListener("click", event=>{
 
     fetch('desasignarPelicula.php', {
         method: 'POST',
+        type: 'JSON',
         body: data
     })
     .then(function(response) {
         if(response.ok) {
-            return response.text()
+            return response.json()
         } else {
             throw "Error en la llamada Ajax";
         }
      })
      .then(data =>{
-      let fila = document.getElementById(data);
+      let fila = document.getElementById(data['film_id']);
       fila.remove();
    })
      .catch(function(err) {
