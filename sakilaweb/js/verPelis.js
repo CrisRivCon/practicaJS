@@ -1,4 +1,3 @@
-//var btnVerPeliculas = document.getElementById('ver-peliculas');
 
 $('.ver-peliculas').on('click', (event)=>{
   let idFila = event.currentTarget.id;
@@ -47,6 +46,7 @@ fetch(url, {
         //console.log(data[item]);
         let pelicula = data[item];
         let fila= document.createElement('tr');
+        fila.setAttribute('id', pelicula['film_id']);
         cuerpo.append(fila);
         let columnas = `<th scope=\"row\">${pelicula['film_id']}</th>
                       <td class=\"${pelicula['film_id']}\">${pelicula['title']}</td>
@@ -66,9 +66,7 @@ fetch(url, {
           fila.innerHTML = columnas;
       }
       $('.desasignar-pelicula').on('click', (event)=>{
-        console.log(event);
         let idFila = event.currentTarget.id;
-        console.log(idFila);
         btnDesasignar.setAttribute('data-id', idFila);
         //let idActor = event.dataset.indexNumber
     })
@@ -104,8 +102,6 @@ btnDesasignar.addEventListener("click", event=>{
     console.log(idPelicula.match(regex));
     let  idFilm = idPelicula.match(regex)[0];
     let  idActor = idPelicula.match(regex)[1];
-    console.log(idFilm);
-    console.log(idActor);
 
     const data = new FormData();
     data.append('film_id', idFilm)
@@ -122,7 +118,10 @@ btnDesasignar.addEventListener("click", event=>{
             throw "Error en la llamada Ajax";
         }
      })
-     .then(data => console.log(data))
+     .then(data =>{
+      let fila = document.getElementById(data);
+      fila.remove();
+   })
      .catch(function(err) {
         console.log(err);
      });

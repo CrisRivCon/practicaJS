@@ -22,7 +22,10 @@ btnEliminar.addEventListener("click", event=>{
             throw "Error en la llamada Ajax";
         }
      })
-     .then(data => console.log(data))
+     .then(data =>{
+         let fila = document.getElementById(data);
+         fila.remove();
+     })
      .catch(function(err) {
         console.log(err);
      });

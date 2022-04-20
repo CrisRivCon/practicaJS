@@ -54,7 +54,7 @@ require 'miDB.php';
                 <tbody>
                   <?php
                     foreach ($data as $row) {
-                      echo "<tr>
+                      echo "<tr id=\"".$row['actor_id']."\">
                                 <th scope=\"row\">".$row['actor_id']."</th>
                                 <td class=\"".$row['actor_id']."\">".$row['first_name']."</td>
                                 <td class=\"".$row['actor_id']."\">".$row['last_name']."</td>
@@ -98,7 +98,7 @@ require 'miDB.php';
               </table>
         </div>
         <div class="row mt-3 justify-content-md-around" id="formulario">
-            <form class="m-3" method="post" action="insertarActor.php">
+            <form class="m-3" id="form_insertar_actor" method="post" action="insertarActor.php">
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">First name</label>
@@ -127,7 +127,7 @@ require 'miDB.php';
                   </div>-->
                 </div>
                 <div class="text-center">
-                    <input class="btn btn-info my-3" type="submit" name="submit" value="Añadir Actor">
+                    <input class="btn btn-info my-3" type="submit" name="submit" id="insertar_actor" value="Añadir Actor">
                 </div>
               </form>
         </div>
@@ -336,8 +336,8 @@ require 'miDB.php';
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script src="js/editarActor.js"></script>
-    <script src="js/eliminarActor.js"></script>
-    <script src="js/verPeliculas.js"></script>
+    <script src="js/eliActor.js"></script>
+    <script src="js/verPelis.js"></script>
       <!--  var btnVerPeliculas = document.getElementsByClassName('verPeliculas');
       for (const key in btnVerPeliculas) {
         key.addEventListener('click', event =>{
