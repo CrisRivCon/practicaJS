@@ -8,11 +8,11 @@ require 'miDB.php';
     $id = $_POST['actor_id'];
     
 
-    if(strlen($firstName)>0 && strlen($lastName)>0){
+    if(strlen($firstName)>=4 && strlen($firstName)<=10 && strlen($lastName)>=4 && strlen($lastName)<=10){
         $sql = "UPDATE actor SET first_name=?, last_name=?, last_update=? WHERE actor_id=?";
         $stmt= $myDB->prepare($sql);
         $stmt->execute([$firstName, $lastName, $lastUpdate, $id]);
-        //$_SESSION['actor_name'] = $firstName;
-        //$_SESSION['actor_last_name'] = $lastName;
+        $results = array("first_name"=>$firstName, "last_name"=>$lastName);
+        echo json_encode($results);
     }
 ?>

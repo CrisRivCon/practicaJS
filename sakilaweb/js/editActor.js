@@ -16,26 +16,16 @@ btnActualizar.addEventListener("click", event=>{
     data.append('actor_id', idActor);
     fetch('actualizarActor.php', {
         method: 'POST',
+        type: 'JSON',
         body: data
     })
     .then(response => response.json())
-    .then(response => console.log(response))
-/*     .then(function(response) {
-        if(response.ok) {
-            return response.json()
-        } else {
-            throw "Error en la llamada Ajax";
-        }
-     })
-     .then(myjson => {
-        console.log(json);
-        for (const key in $('td.'+idActor)) {
-            const element = $('td.'+idActor)[key];
-            console.log(data);
-            //element.innerHTML = $('#editar_actor input')[key].value;
-           // document.querySelector('.card-body').innerHTML = datos;
-        }
-    }) */
+    .then(response => {
+        let fila = Array.from(document.getElementsByClassName(idActor));
+                fila[0].textContent = response['first_name'];
+                fila[1].textContent = response['last_name'];
+    })
+
      .catch(function(err) {
         console.log(err);
      });

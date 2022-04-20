@@ -56,7 +56,7 @@ require 'miDB.php';
                 <tbody>
                   <?php
                     foreach ($data as $row) {
-                      echo "<tr id=\"".$row['actor_id']."\">
+                      echo "<tr id=\"f".$row['actor_id']."\">
                                 <th scope=\"row\">".$row['actor_id']."</th>
                                 <td class=\"".$row['actor_id']."\">".$row['first_name']."</td>
                                 <td class=\"".$row['actor_id']."\">".$row['last_name']."</td>
@@ -104,11 +104,11 @@ require 'miDB.php';
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">First name</label>
-                    <input type="text" class="form-control bg-info text-white" name="first_name" id="validationDefault01" required>
+                    <input type="text" class="form-control bg-info text-white" name="first_name" id="validationDefault01" minlength="4" maxlength="10" required>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" required>
+                    <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" minlength="4" maxlength="10" required>
                   </div>
                 </div>
                 <!--<div class="form-row">
@@ -194,11 +194,11 @@ require 'miDB.php';
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">First name</label>
-                    <input type="text" class="form-control bg-info text-white" name="first_name" id="validationDefault01" required>
+                    <input type="text" class="form-control bg-info text-white" name="first_name" id="validationDefault01" minlength="4" maxlength="10" required>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" required>
+                    <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" minlength="4" maxlength="10" required>
                   </div>
                 </div>
               </form>
@@ -341,7 +341,7 @@ require 'miDB.php';
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-    <script src="js/editarActor.js"></script>
+    <script src="js/editActor.js"></script>
     <script src="js/eliActor.js"></script>
     <script src="js/verPelis.js"></script>
     <script src="js/asignarPelicula.js"></script>
