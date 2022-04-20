@@ -13,17 +13,18 @@ btnEliminar.addEventListener("click", event=>{
 
     fetch('eliminarActor.php', {
         method: 'POST',
+        type: 'JSON',
         body: data
     })
     .then(function(response) {
         if(response.ok) {
-            return response.text()
+            return response.json()
         } else {
             throw "Error en la llamada Ajax";
         }
      })
      .then(data =>{
-         let fila = document.getElementById(data);
+         let fila = document.getElementById(data['actor_id']);
          fila.remove();
      })
      .catch(function(err) {
