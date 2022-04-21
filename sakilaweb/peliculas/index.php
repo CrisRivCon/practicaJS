@@ -112,9 +112,25 @@ require 'miDB.php';
                   </div>
                 </div>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input bg-info text-white" name="file" id="form_img" accept="image/*" required>
-                  <label id="preview" class="custom-file-label bg-info text-white preview" for="file" >Selecciona una imagen...</label>
+                  <input type="file" class="custom-file-input bg-info text-white" id="form_img" accept="image/*" required>
+                  <label class="custom-file-label bg-info text-white preview" for="customFile" >Selecciona una imagen...</label>
                 </div>
+                <!--<div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted" for="validationDefault03">City</label>
+                    <input type="text" class="form-control bg-info text-white" id="validationDefault03" required>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="text-muted" for="validationDefault04">State</label>
+                    <select class="custom-select bg-info text-white" id="validationDefault04" required>
+                      <option selected disabled value="">Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="text-muted" for="validationDefault05">Zip</label>
+                    <input type="text" class="form-control bg-info text-white" id="validationDefault05" required>
+                  </div>-->
                 <div class="text-center">
                     <input class="btn btn-info my-3" type="submit" name="submit" id="insertar_actor" value="Añadir Actor">
                 </div>
@@ -159,9 +175,8 @@ require 'miDB.php';
             </div>
         </div>
         <div class="modal-footer">
-          <div id="pie_modal_asignar"></div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" name="submit" id="btn_asignar" class="btn btn-info">Asignar</button>
+          <button type="button" name="submit" id="btn_asignar" class="btn btn-info" data-dismiss="modal">Asignar</button>
         </div>
       </div>
     </div>
@@ -333,6 +348,6 @@ require 'miDB.php';
     <script src="js/elimActor.js"></script>
     <script src="js/verPelis.js"></script>
     <script src="js/asignarPelicula.js"></script>
-    <!-- <script src="js/insertarActor.js"></script> -->
-</body>
+<!--     <script src="js/insertarActor.js"></script>
+ --></body>
 </html>

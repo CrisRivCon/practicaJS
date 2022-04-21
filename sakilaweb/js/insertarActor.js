@@ -1,15 +1,22 @@
 
-$('#insertar_actor').on('click', (event)=>{
-  
-  var url = 'insertarActor.php';
+ 
+  const url = 'insertarActor.php';
 
-  //const data = new FormData(document.getElementById('form_insert_actor'));
-  const input = document.getElementById('form_img');
-  const preview = document.querySelector('.preview');
+  const inputFile = document.getElementById('form_img');
+  const preview = document.getElementById('preview');
+  const btnInsertar = document.getElementById('insertar_actor');
+  const curFiles = inputFile.files;
 
-  input.style.opacity = 0;
-
-  input.addEventListener('change', updateImageDisplay);
+  inputFile.addEventListener('change', event =>{
+    let number = curFiles[0].size;
+    if(validFileType(curFiles[0])){
+      if(curFiles.length === 0) {
+        preview.innerHTML = 'No files currently selected for upload';
+      }else{
+        preview.innerHTML = curFiles[0].name+"..."+ returnFileSize(number);
+      }
+    }else preview.innerHTML = 'El tipo de archivo no es válido.';
+  });
 
   function returnFileSize(number) {
     if(number < 1024) {
@@ -20,40 +27,46 @@ $('#insertar_actor').on('click', (event)=>{
       return (number/1048576).toFixed(1) + 'MB';
     }
   }
-  
 
-  function updateImageDisplay() {
-    console.log('aaa');
-
-    const curFiles = input.files;
-    if(curFiles.length === 0) {
-      preview.text = 'No files currently selected for upload';
-    } else {
-      const list = document.createElement('ol');
-      preview.appendChild(list);
+  const fileTypes = [
+    "image/apng",
+    "image/bmp",
+    "image/gif",
+    "image/jpeg",
+    "image/pjpeg",
+    "image/png",
+    "image/svg+xml",
+    "image/tiff",
+    "image/webp",
+    "image/x-icon"
+  ];
   
-      for(const file of curFiles) {
-        const listItem = document.createElement('li');
-        const para = document.createElement('p');
-        if(validFileType(file)) {
-          para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
-          const image = document.createElement('img');
-          image.src = URL.createObjectURL(file);
-  
-          listItem.appendChild(image);
-          listItem.appendChild(para);
-        } else {
-          para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-          listItem.appendChild(para);
-        }
-  
-        list.appendChild(listItem);
-      }
-    }
+  function validFileType(file) {
+    return fileTypes.includes(file.type);
   }
-})
-  
 
+//Enviar los datos para insertarlos en la BD
+btnInsertar.addEventListener("click", event=>{
+  const data = new FormData();
+  data.append('file', curFiles);
+  console.log(...data);
+  console.log(curFiles[0]);
+
+  fetch('insertarActor.php', {
+      method: 'POST',
+      type: 'JSON',
+      body: data
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+      
+  })
+
+   .catch(function(err) {
+      console.log(err);
+   });
+})
 
 /*   var actorId = document.getElementById("actor").value;
   var filmId = document.getElementById("film").value;
