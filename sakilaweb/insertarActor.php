@@ -12,7 +12,7 @@ require 'miDB.php';
         $stmt->execute([$firstName, $lastName, $lastUpdate]);
         $_SESSION['actor_name'] = $firstName;
         $_SESSION['actor_last_name'] = $lastName;
-        header('Location: /pruebaPHP/PRACTICAJS/sakilaweb/index.php');
+        header('Location: index.php');
     }else{echo json_encode(['numero de caracteres incorrecto']);
     }
 ?>
