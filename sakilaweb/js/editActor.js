@@ -19,7 +19,7 @@ btnActualizar.addEventListener("click", event=>{
         type: 'JSON',
         body: data
     })
-    .then(response => response.json())
+    .then(response =>{ return response.json()})
     .then(response => {
         let fila = Array.from(document.getElementsByClassName(idActor));
                 fila[0].textContent = response['first_name'];

@@ -2,7 +2,7 @@
 
 session_start();
 require 'miDB.php';
-    $data = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
+    $data = $myDB->query("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
     $dataActor = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id LIMIT 30")->fetchAll();
     $dataFilm = $myDB->query("SELECT film_id, title FROM film ORDER BY film_id LIMIT 30")->fetchAll();
     /*foreach ($data as $row) {
@@ -16,6 +16,7 @@ require 'miDB.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" type="text/css" media="screen" />
     <title>Actores</title>
 </head>
 <body>
@@ -50,6 +51,7 @@ require 'miDB.php';
                     <th scope="col">#</th>
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
+                    <th scope="col">Img</th>
                     <th scope="col" class="text-center">Opciones</th>
                   </tr>
                 </thead>
@@ -60,6 +62,15 @@ require 'miDB.php';
                                 <th scope=\"row\">".$row['actor_id']."</th>
                                 <td class=\"".$row['actor_id']."\">".$row['first_name']."</td>
                                 <td class=\"".$row['actor_id']."\">".$row['last_name']."</td>
+                                <td class=\"".$row['actor_id']." \">
+                                  <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
+                                    <a
+                                      data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
+                                      data-fancybox=\"gallery\" href=\"img/".$row['img']."\">
+                                      <img class=\"rounded\" src=\"img/".$row['img']."\" />
+                                    </a>
+                                  </div>
+                                </td>
                                 <td class=\"text-center\">
                                     <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
                                       <div class=\"btn-group\" role=\"group\">
@@ -100,7 +111,7 @@ require 'miDB.php';
               </table>
         </div>
         <div class="row mt-3 justify-content-md-around" id="form_insert_actor">
-            <form class="m-3" id="form_insertar_actor" method="post" action="insertarActor.php" enctype="multipart/form-data">
+            <form class="m-3" id="form_insertar_actor" method="post" action="" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">First name</label>
@@ -325,14 +336,14 @@ require 'miDB.php';
       </div>
     </div>-->
   </div>
-  
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script src="js/editActor.js"></script>
     <script src="js/elimActor.js"></script>
     <script src="js/verPelis.js"></script>
     <script src="js/asignarPelicula.js"></script>
-    <!-- <script src="js/insertarActor.js"></script> -->
+    <script src="js/insertarActor.js"></script>
 </body>
 </html>

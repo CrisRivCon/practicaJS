@@ -1,19 +1,19 @@
 
  
-  const url = 'insertarActor.php';
-
-  const inputFile = document.getElementById('form_img');
-  const preview = document.getElementById('preview');
-  const btnInsertar = document.getElementById('insertar_actor');
-  const curFiles = inputFile.files;
+  let url = 'insertarActor.php';
+  let formInsert = document.getElementById('form_insertar_actor');
+  let inputFile = document.getElementById('form_img');
+  let preview = document.getElementById('preview');
+  let btnInsertar = document.getElementById('insertar_actor');
+  let imagen = inputFile.files;
 
   inputFile.addEventListener('change', event =>{
-    let number = curFiles[0].size;
-    if(validFileType(curFiles[0])){
-      if(curFiles.length === 0) {
+    let number = imagen[0].size;
+    if(validFileType(imagen[0])){
+      if(imagen.length === 0) {
         preview.innerHTML = 'No files currently selected for upload';
       }else{
-        preview.innerHTML = curFiles[0].name+"..."+ returnFileSize(number);
+        preview.innerHTML = imagen[0].name+"..."+ returnFileSize(number);
       }
     }else preview.innerHTML = 'El tipo de archivo no es válido.';
   });
@@ -41,25 +41,50 @@
     "image/x-icon"
   ];
   
-  function validFileType(file) {
-    return fileTypes.includes(file.type);
+  function validFileType(imagen) {
+    return fileTypes.includes(imagen.type);
   }
 
 //Enviar los datos para insertarlos en la BD
 btnInsertar.addEventListener("click", event=>{
-  const data = new FormData();
-  data.append('file', curFiles);
-  console.log(...data);
-  console.log(curFiles[0]);
+  event.preventDefault();
+  const data = new FormData(document.getElementById('form_insertar_actor'));
+  data.append('file', imagen);
 
-  fetch('insertarActor.php', {
+  fetch(url, {
       method: 'POST',
       type: 'JSON',
       body: data
   })
-  .then(response => response.json())
+  .then(function(response) {
+    if(response.status==200) {
+         return response.json();
+    } else {
+        throw "Error en la llamada AJAX";
+    }
+  })
   .then(data => {
-    console.log(data);
+    console.log(data['actor_id']);
+  /*   let nuevaFila = `<tr id="f${data['actor_id']}.">
+                        <th scope=\"row\">${data['actor_id']}</th>
+                        <td class=\"${data['actor_id']}\">${data['first_name']}</td>
+                        <td class=\"${data['actor_id']}\">${data['last_name']}</td>
+                        <td class=\"${data['actor_id']}\"><img src=\"img/${data['img']}\"/}></td>
+                        <td class=\"text-center\">
+                            <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
+                              <div class=\"btn-group\" role=\"group\">
+                                <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">
+                                  Opciones
+                                </button>
+                                <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
+                                  <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
+                                  <a class=\"dropdown-item eliminar-actor\" id=\"${data['actor_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
+                                  <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+                                </div>
+                              </div>
+                            </div>
+                        </td>
+                      </tr>` */
       
   })
 
