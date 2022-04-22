@@ -13,8 +13,8 @@ $('.editar-actor').on('click', (event)=>{
 btnActualizar.addEventListener("click", event=>{
     const data = new FormData(document.getElementById("form_editar_actor"));
     let idActor = btnActualizar.dataset.id;
-    data.append('actor_id', idActor);
-    fetch('actualizarActor.php', {
+    data.append('film_id', idActor);
+    fetch('editar.php', {
         method: 'POST',
         type: 'JSON',
         body: data
@@ -22,8 +22,8 @@ btnActualizar.addEventListener("click", event=>{
     .then(response => response.json())
     .then(response => {
         let fila = Array.from(document.getElementsByClassName(idActor));
-                fila[0].textContent = response['first_name'];
-                fila[1].textContent = response['last_name'];
+                fila[0].textContent = response['title'];
+                fila[1].textContent = response['description'];
     })
 
      .catch(function(err) {

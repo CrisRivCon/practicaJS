@@ -1,7 +1,7 @@
 
 $('#insertar_actor').on('click', (event)=>{
   
-  var url = 'insertarActor.php';
+  var url = 'insertar.php';
 
   //const data = new FormData(document.getElementById('form_insert_actor'));
   const input = document.getElementById('form_img');

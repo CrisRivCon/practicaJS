@@ -12,7 +12,7 @@ require 'miDB.php';
 
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["file"]["tmp_name"];
-        $nombre_img = basename($_FILES["file"]["name"]);
+        $nombre_img = $_FILES["file"]["name"];
         $tipo = $_FILES['file']['type'];
         $tamano = $_FILES['file']['size'];
 
@@ -29,11 +29,11 @@ require 'miDB.php';
                     $stmt= $myDB->prepare($sql);
                     $stmt->execute([$firstName, $lastName, $lastUpdate, $nombre_img]);
 
-                    $sqlS="SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 1";
-                    $stmtS=$myDB->prepare($sqlS);
-                    $stmtS->execute();
-                    $resultadoS = $stmtS->fetchAll();
-                    echo json_encode($resultadoS);
+                    $sqlS= $myDB->query("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 1")->fetchAll();
+                    // $stmtS=$myDB->prepare($sqlS);
+                    // $stmtS->execute();
+                    // $resultadoS = $stmtS->fetchAll();
+                    echo json_encode($sqlS, JSON_FORCE_OBJECT);
 
                 }else{echo json_encode(['numero de caracteres incorrecto']);
                 }

@@ -1,56 +1,16 @@
 
  
-  let url = 'insertarActor.php';
+  let url = 'insertar.php';
   let formInsert = document.getElementById('form_insertar_actor');
   let inputFile = document.getElementById('form_img');
   let preview = document.getElementById('preview');
   let btnInsertar = document.getElementById('insertar_actor');
   let imagen = inputFile.files;
-  let tamanoMax = 5000;
+  let tamañoMax = 5000;
 
-  inputFile.addEventListener('change', event =>{
-    let number = imagen[0].size;
-    if(validFileType(imagen[0])){
-      if(imagen.length === 0) {
-        preview.innerHTML = 'No files currently selected for upload';
-      }else{
-        preview.innerHTML = imagen[0].name+"..."+ returnFileSize(number);
-      }
-    }else preview.innerHTML = 'El tipo de archivo no es válido.';
-  });
-
-  function returnFileSize(number) {
-    if(number < 1024) {
-      return number + 'bytes';
-    } else if(number >= 1024 && number < 1048576) {
-      return (number/1024).toFixed(1) + 'KB';
-    } else if(number >= 1048576) {
-      return (number/1048576).toFixed(1) + 'MB';
-    }
-  }
-
-  const fileTypes = [
-    "image/apng",
-    "image/bmp",
-    "image/gif",
-    "image/jpeg",
-    "image/pjpeg",
-    "image/png",
-    "image/svg+xml",
-    "image/tiff",
-    "image/webp",
-    "image/x-icon"
-  ];
-  
-  function validFileType(imagen) {
-    return fileTypes.includes(imagen.type);
-  }
-
-//Enviar los datos para insertarlos en la BD
 
 btnInsertar.addEventListener("click", event=>{
   event.preventDefault();
-  if(validFileType(imagen[0])&&imagen[0].size<tamanoMax){
     const data = new FormData(document.getElementById('form_insertar_actor'));
     data.append('file', imagen);
 

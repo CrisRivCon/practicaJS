@@ -2,9 +2,9 @@
 $('.ver-peliculas').on('click', (event)=>{
   let idFila = event.currentTarget.id;
 //console.log('id fila: '+idFila);
-var url = 'verPeliculas.php';
+var url = 'ver.php';
 const data = new FormData();
-data.append('actor_id', idFila);
+data.append('film_id', idFila);
 fetch(url, {
   method: 'POST',
    type: 'JSON',
@@ -29,8 +29,8 @@ fetch(url, {
     <thead class="bg-info">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Release Year</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -45,11 +45,11 @@ fetch(url, {
         //console.log(data[item]);
         let pelicula = data[item];
         let fila= document.createElement('tr');
-        fila.setAttribute('id', pelicula['film_id']);
+        fila.setAttribute('id', pelicula['actor_id']);
         cuerpo.append(fila);
-        let columnas = `<th scope=\"row\">${pelicula['film_id']}</th>
-                      <td class=\"${pelicula['film_id']}\">${pelicula['title']}</td>
-                      <td class=\"${pelicula['film_id']}\">${pelicula['release_year']}</td>
+        let columnas = `<th scope=\"row\">${pelicula['actor_id']}</th>
+                      <td class=\"${pelicula['actor_id']}\">${pelicula['first_name']}</td>
+                      <td class=\"${pelicula['actor_id']}\">${pelicula['last_name']}</td>
                       <td class=\"text-center\">
                         <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
                           <div class=\"btn-group\" role=\"group\">
@@ -57,7 +57,7 @@ fetch(url, {
                               Opciones
                             </button>
                             <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
-                              <a class=\"dropdown-item desasignar-pelicula\" id=\"${pelicula['film_id']}_${idFila}\" href=\"#\" data-toggle=\"modal\" data-target=\"#desasignar_pelicula\">Desasignar</a>
+                              <a class=\"dropdown-item desasignar-pelicula\" id=\"${pelicula['actor_id']}_${idFila}\" href=\"#\" data-toggle=\"modal\" data-target=\"#desasignar_pelicula\">Desasignar</a>
                             </div>
                           </div>
                         </div>
@@ -102,10 +102,10 @@ btnDesasignar.addEventListener("click", event=>{
     let  idActor = idPelicula.match(regex)[1];
 
     const data = new FormData();
-    data.append('film_id', idFilm)
-    data.append('actor_id', idActor)
+    data.append('actor_id', idFilm)
+    data.append('film_id', idActor)
 
-    fetch('desasignarPelicula.php', {
+    fetch('desasignar.php', {
         method: 'POST',
         type: 'JSON',
         body: data
@@ -118,7 +118,7 @@ btnDesasignar.addEventListener("click", event=>{
         }
      })
      .then(data =>{
-      let fila = document.getElementById(data['film_id']);
+      let fila = document.getElementById(data['actor_id']);
       fila.remove();
    })
      .catch(function(err) {

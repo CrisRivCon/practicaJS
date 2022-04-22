@@ -33,7 +33,7 @@ require 'miDB.php';
                   <a class="nav-link text-light" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="#">Peliculas</a>
+                  <a class="nav-link text-light" href="./peliculas/index.php">Peliculas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
@@ -62,7 +62,7 @@ require 'miDB.php';
                                 <th scope=\"row\">".$row['actor_id']."</th>
                                 <td class=\"".$row['actor_id']."\">".$row['first_name']."</td>
                                 <td class=\"".$row['actor_id']."\">".$row['last_name']."</td>
-                                <td class=\"".$row['actor_id']." \">
+                                <td class=\"".$row['actor_id']."\">
                                   <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
                                     <a
                                       data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"

@@ -9,9 +9,9 @@ btnEliminar.addEventListener("click", event=>{
     let idActor = btnEliminar.dataset.id;
 
     const data = new FormData();
-    data.append('actor_id', idActor)
+    data.append('film_id', idActor)
 
-    fetch('eliminarActor.php', {
+    fetch('eliminar.php', {
         method: 'POST',
         type: 'JSON',
         body: data
@@ -24,7 +24,7 @@ btnEliminar.addEventListener("click", event=>{
         }
      })
      .then(data =>{
-         let fila = document.getElementById("f"+data['actor_id']);
+         let fila = document.getElementById("f"+data['film_id']);
          fila.remove();
      })
      .catch(function(err) {
