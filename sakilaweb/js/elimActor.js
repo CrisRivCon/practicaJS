@@ -7,7 +7,7 @@ $('.eliminar-actor').on('click', (event)=>{
 
 btnEliminar.addEventListener("click", event=>{
     let idActor = btnEliminar.dataset.id;
-
+    
     const data = new FormData();
     data.append('actor_id', idActor)
 

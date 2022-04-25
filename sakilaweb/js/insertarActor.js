@@ -67,10 +67,11 @@ btnInsertar.addEventListener("click", event=>{
       }
     })
     .then(data => {
-      console.log(data['actor_id']);
-    
-    /*   let nuevaFila = `<tr id="f${data['actor_id']}.">
-                          <th scope=\"row\">${data['actor_id']}</th>
+      let id = data['actor_id'];
+      let cuerpo = document.getElementById('cuerpo_tabla');
+      let fil = document.createElement('tr');
+      fil.setAttribute('id', 'f'+id);
+      let nuevaFila = `<th scope=\"row\">${data['actor_id']}</th>
                           <td class=\"${data['actor_id']}\">${data['first_name']}</td>
                           <td class=\"${data['actor_id']}\">${data['last_name']}</td>
                           <td class=\"${data['actor_id']}\"><img src=\"img/${data['img']}\"/}></td>
@@ -88,8 +89,9 @@ btnInsertar.addEventListener("click", event=>{
                                 </div>
                               </div>
                           </td>
-                        </tr>` */
-        
+                        </tr>`;
+      fil.innerHTML = nuevaFila;
+      cuerpo.prepend(fil);
     })
 
     .catch(function(err) {

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'miDB.php';
+var_dump($_POST);
 
 if(isset($_POST['actor_id'])){
     $sql = "DELETE FROM actor WHERE actor_id=?";
