@@ -18,7 +18,7 @@ btnBuscar.addEventListener('click', (event)=>{
     data.append = ('nombre', nombre);
     console.log('nombre de actor');
   }
-  fetch(url, {
+  fetch('buscarPeliculas.php', {
     method: 'POST',
      type: 'JSON',
     body: data

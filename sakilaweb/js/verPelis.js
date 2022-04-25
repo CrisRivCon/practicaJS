@@ -121,7 +121,7 @@ btnDesasignar.addEventListener("click", event=>{
       let fila = document.getElementById(data['film_id']);
       fila.remove();
    })
-     .catch(function(err) {
+     /* .catch(function(err) {
         console.log(err);
-     });
+     }); */
 })
