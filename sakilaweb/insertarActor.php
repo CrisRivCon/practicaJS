@@ -8,47 +8,46 @@ require 'miDB.php';
     $error = $_FILES["file"]["error"];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $directorio = './img';
-
+    $tipo = $_FILES['file']['type'];
+    $tiposImg = array("image/gif", "image/jpeg", "image/jpg", "image/png");
+    /* if (in_array($tipo, $tiposImg)){
+        print_r($tipo);
+    } else {
+        echo "no";
+    } */
+    
 
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["file"]["tmp_name"];
         $nombre_img = $_FILES["file"]["name"];
-        $tipo = $_FILES['file']['type'];
+        //$tipo = $_FILES['file']['type'];
         $tamano = $_FILES['file']['size'];
 
         if (!empty($nombre_img) && ($tamano <= 5000))
         {
-            if (($tipo == "image/gif")
-            || ($tipo == "image/jpeg")
-            || ($tipo == "image/jpg")
-            || ($tipo == "image/png"))
+            if (in_array($tipo, $tiposImg))
             {
                 move_uploaded_file($tmp_name, "$directorio/$nombre_img");
-                if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=$minNumCaracteres && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=$minNumCaracteres && strlen($lastName)<=$maxNumCaracteres){
+                if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=$minNumCaracteres && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=$minNumCaracteres && strlen($lastName)<=$maxNumCaracteres)
+                {
                     $sql = "INSERT INTO actor (first_name, last_name, last_update, img) VALUES (:first_name,:last_name,:last_update,:img)";
                     $stmt= $myDB->prepare($sql);
                     $stmt->execute([$firstName, $lastName, $lastUpdate, $nombre_img]);
 
-                    $sqlS= $myDB->query("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 1")->fetchAll();
-                    // $stmtS=$myDB->prepare($sqlS);
-                    // $stmtS->execute();
-                    // $resultadoS = $stmtS->fetchAll();
-                    echo json_encode($sqlS, JSON_FORCE_OBJECT);
+                    $sqlS= ("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 1");
+                    $stmtS=$myDB->prepare($sqlS);
+                    $stmtS->execute();
+                    $resultadoS = $stmtS->fetch();
+                    //echo json_encode($resultadoS);
+                    echo json_encode($resultadoS);
 
-                }else{echo json_encode(['numero de caracteres incorrecto']);
+                } else {
+                    echo json_encode(['numero de caracteres incorrecto']);
                 }
-                } 
-                else 
-                {
-                echo "No se puede subir una imagen con ese formato ";
-                }
+            }else{echo "No se puede subir una imagen con ese formato ";}
         }else{
             if($nombre_img == !NULL) echo "La imagen es demasiado grande "; 
         }
-    }
+    };
             
 ?>
-
-<!-- ; Maximum allowed size for uploaded files.
-; http://php.net/upload-max-filesize
-upload_max_filesize = 2G -->
