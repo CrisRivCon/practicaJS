@@ -74,7 +74,14 @@ btnInsertar.addEventListener("click", event=>{
       let nuevaFila = `<th scope=\"row\">${data['actor_id']}</th>
                           <td class=\"${data['actor_id']}\">${data['first_name']}</td>
                           <td class=\"${data['actor_id']}\">${data['last_name']}</td>
-                          <td class=\"${data['actor_id']}\"><img src=\"img/${data['img']}\"/}></td>
+                          <td class=\"${data['actor_id']} text-center\">
+                              <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
+                                <a data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
+                                  data-fancybox=\"gallery\" href=\"img/${data['img']}\">
+                                  <img class=\"rounded\" src=\"img/${data['img']}\"/>
+                              </a>
+                              </div>
+                          </td>
                           <td class=\"text-center\">
                               <div class=z\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
                                 <div class=\"btn-group\" role=\"group\">
@@ -92,6 +99,13 @@ btnInsertar.addEventListener("click", event=>{
                         </tr>`;
       fil.innerHTML = nuevaFila;
       cuerpo.prepend(fil);
+
+      let btnEliminar = document.getElementById("eliminar-actor");
+
+      $('.eliminar-actor').on('click', (event)=>{
+          let idFila = event.currentTarget.id;
+          btnEliminar.setAttribute('data-id', idFila);
+      })
     })
 
     .catch(function(err) {

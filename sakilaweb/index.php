@@ -64,8 +64,7 @@ require 'miDB.php';
                                 <td class=\"".$row['actor_id']."\">".$row['last_name']."</td>
                                 <td class=\"".$row['actor_id']." text-center\">
                                   <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
-                                    <a
-                                      data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
+                                    <a  data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
                                       data-fancybox=\"gallery\" href=\"img/".$row['img']."\">
                                       <img class=\"rounded\" src=\"img/".$row['img']."\" />
                                     </a>
