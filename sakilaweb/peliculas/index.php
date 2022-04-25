@@ -37,6 +37,9 @@ require 'miDB.php';
                 <li class="nav-item">
                   <a class="nav-link text-light" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="">Asignar Pelicula</a>
+                </li>
               </ul>
               <!--<form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
@@ -53,7 +56,7 @@ require 'miDB.php';
                     <th scope="col" class="text-center">Opciones</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="cuerpo_tabla">
                   <?php
                     foreach ($data as $row) {
                       echo "<tr id=\"f".$row['film_id']."\">
@@ -77,62 +80,23 @@ require 'miDB.php';
                               </tr>";
                       }
                   ?>
-                  <!--<tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                            <div class="btn-group" role="group">
-                              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Opciones
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href="#">Editar</a>
-                                <a class="dropdown-item" href="#">Eliminar</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ver_peliculas">Ver Peliculas</a>
-                              </div>
-                            </div>
-                          </div>
-                    </td>
-                  </tr>-->
                 </tbody>
               </table>
         </div>
-        <div class="row mt-3 justify-content-md-around" id="form_insert_actor">
-            <form class="m-3" id="form_insertar_actor" method="post" action="insertarActor.php" enctype="multipart/form-data">
+        <div class="row mt-3 justify-content-md-around">
+            <form class="m-3" id="form_insertar_actor" method="post" action="" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">Title</label>
-                    <input type="text" class="form-control bg-info text-white" name="first_name" id="validationDefault01" minlength="4" maxlength="10" required>
+                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" minlength="4" maxlength="10" required>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault02">Description</label>
-                    <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" minlength="4" maxlength="10" required>
+                    <input type="text" class="form-control bg-info text-white" name="description" id="validationDefault02" minlength="4" maxlength="10" required>
                   </div>
                 </div>
-<!--                 <div class="custom-file">
-                  <input type="file" class="custom-file-input bg-info text-white" id="form_img" accept="image/*" required>
-                  <label class="custom-file-label bg-info text-white preview" for="customFile" >Selecciona una imagen...</label>
-                </div> -->
-                <!--<div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <label class="text-muted" for="validationDefault03">City</label>
-                    <input type="text" class="form-control bg-info text-white" id="validationDefault03" required>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label class="text-muted" for="validationDefault04">State</label>
-                    <select class="custom-select bg-info text-white" id="validationDefault04" required>
-                      <option selected disabled value="">Choose...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label class="text-muted" for="validationDefault05">Zip</label>
-                    <input type="text" class="form-control bg-info text-white" id="validationDefault05" required>
-                  </div>-->
                 <div class="text-center">
-                    <input class="btn btn-info my-3" type="submit" name="submit" id="insertar_actor" value="Añadir Actor">
+                    <input class="btn btn-info my-3" type="submit" name="submit" id="insertar_actor" value="Añadir Pelicula">
                 </div>
             </form>
         </div>
@@ -307,38 +271,6 @@ require 'miDB.php';
       </div>
     </div>
   </div>
-  <!-- Modal editar pelicula 
-  <div class="modal fade" id="editar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Actualizar Pelicula</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="row mt-3 justify-content-md-around" id="formulario">
-              <form class="m-3" id="form_editar_pelicula">
-                <div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <label class="text-muted" for="validationDefault01">Title</label>
-                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" required>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="validationDefault02">Release Year</label>
-                    <input type="text" class="form-control bg-info text-white" name="release_year" id="validationDefault02" required>
-                  </div>
-                </div>
-              </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="actualizar-pelicula" class="btn btn-info" data-dismiss="modal">Actualizar</button>
-        </div>
-      </div>
-    </div>-->
   </div>
   
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -348,6 +280,6 @@ require 'miDB.php';
     <script src="js/eliminar.js"></script>
     <script src="js/ver.js"></script>
     <script src="js/asignarPelicula.js"></script>
-<!--     <script src="js/insertarActor.js"></script>
- --></body>
+    <script src="js/insertar.js"></script>
+  </body>
 </html>

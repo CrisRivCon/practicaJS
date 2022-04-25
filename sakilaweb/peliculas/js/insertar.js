@@ -1,83 +1,65 @@
 
-$('#insertar_actor').on('click', (event)=>{
+ 
+  let url = 'insertar.php';
+  let formInsert = document.getElementById('form_insertar_actor');
+  let preview = document.getElementById('preview');
+  let btnInsertar = document.getElementById('insertar_actor');
   
-  var url = 'insertar.php';
+//Enviar los datos para insertarlos en la BD
 
-  //const data = new FormData(document.getElementById('form_insert_actor'));
-  const input = document.getElementById('form_img');
-  const preview = document.querySelector('.preview');
+btnInsertar.addEventListener("click", event=>{
+  event.preventDefault();
+    const data = new FormData(document.getElementById('form_insertar_actor'));
+    //data.append('file', imagen);
 
-  input.style.opacity = 0;
-
-  input.addEventListener('change', updateImageDisplay);
-
-  function returnFileSize(number) {
-    if(number < 1024) {
-      return number + 'bytes';
-    } else if(number >= 1024 && number < 1048576) {
-      return (number/1024).toFixed(1) + 'KB';
-    } else if(number >= 1048576) {
-      return (number/1048576).toFixed(1) + 'MB';
-    }
-  }
-  
-
-  function updateImageDisplay() {
-    console.log('aaa');
-
-    const curFiles = input.files;
-    if(curFiles.length === 0) {
-      preview.text = 'No files currently selected for upload';
-    } else {
-      const list = document.createElement('ol');
-      preview.appendChild(list);
-  
-      for(const file of curFiles) {
-        const listItem = document.createElement('li');
-        const para = document.createElement('p');
-        if(validFileType(file)) {
-          para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
-          const image = document.createElement('img');
-          image.src = URL.createObjectURL(file);
-  
-          listItem.appendChild(image);
-          listItem.appendChild(para);
-        } else {
-          para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-          listItem.appendChild(para);
-        }
-  
-        list.appendChild(listItem);
+    fetch(url, {
+        method: 'POST',
+        type: 'JSON',
+        body: data
+    })
+    .then(function(response) {
+      if(response.status==200) {
+          return response.json();
+      } else {
+          throw "Error en la llamada AJAX";
       }
-    }
-  }
+    })
+    .then(data => {
+      let id = data['film_id'];
+      let cuerpo = document.getElementById('cuerpo_tabla');
+      let fil = document.createElement('tr');
+      fil.setAttribute('id', 'f'+id);
+      let nuevaFila = `<th scope=\"row\">${data['film_id']}</th>
+                          <td class=\"${data['film_id']}\">${data['title']}</td>
+                          <td class=\"${data['film_id']}\">${data['description']}</td>
+                          <td class=\"text-center\">
+                              <div class=z\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
+                                <div class=\"btn-group\" role=\"group\">
+                                  <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">
+                                    Opciones
+                                  </button>
+                                  <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
+                                    <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
+                                    <a class=\"dropdown-item eliminar-actor\" id=\"${data['film_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
+                                    <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+                                  </div>
+                                </div>
+                              </div>
+                          </td>
+                        </tr>`;
+      fil.innerHTML = nuevaFila;
+      cuerpo.prepend(fil);
+
+      let btnEliminar = document.getElementById("eliminar-actor");
+
+      $('.eliminar-actor').on('click', (event)=>{
+          let idFila = event.currentTarget.id;
+          btnEliminar.setAttribute('data-id', idFila);
+      })
+    })
+
+    .catch(function(err) {
+        console.log(err);
+    });
+
 })
-  
-
-
-/*   var actorId = document.getElementById("actor").value;
-  var filmId = document.getElementById("film").value;
-
-  data.append('actor_id', actorId);
-  data.append('film_id', filmId);
-  console.log(data);
-
-  fetch(url, {
-    method: 'POST',
-    type: 'JSON',
-    body: data,
-  })
-  .then(response=> {
-    console.log(response);
-    if(response.status==200) {
-        return response.json();
-    } else {
-        throw "Error en la llamada AJAX";
-    }
-  })
-  .then(data => console.log(data))
-  .catch(function(err) {
-    console.log(err);
-  });
-});
- */

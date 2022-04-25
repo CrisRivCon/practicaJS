@@ -1,18 +1,22 @@
 <?php
-session_start();
 require 'miDB.php';
 
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
+    $firstName = $_POST['title'];
+    $lastName = $_POST['description'];
     $lastUpdate = date("Y-m-d h:i:s", time());
+    $minCaracteres = 4;
+    $maxCaracteres = 20;
 
-    if(isset($_POST['submit'])&& $_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=4 && strlen($firstName)<=10 && strlen($lastName)>=4 && strlen($lastName)<=10){
-        $sql = "INSERT INTO actor (first_name, last_name, last_update) VALUES (:first_name,:last_name,:last_update)";
+    if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=$minCaracteres && strlen($firstName)<=$maxCaracteres && strlen($lastName)>=$minCaracteres && strlen($lastName)<=$maxCaracteres){
+        $sql = "INSERT INTO film (title, description, last_update) VALUES (:title,:description,:last_update)";
         $stmt= $myDB->prepare($sql);
         $stmt->execute([$firstName, $lastName, $lastUpdate]);
-        $_SESSION['actor_name'] = $firstName;
-        $_SESSION['actor_last_name'] = $lastName;
-        header('Location: index.php');
+
+        $sqlS= ("SELECT film_id, title, description FROM film ORDER BY film_id DESC LIMIT 1");
+        $stmtS=$myDB->prepare($sqlS);
+        $stmtS->execute();
+        $resultadoS = $stmtS->fetch();
+        echo json_encode($resultadoS);
     }else{echo json_encode(['numero de caracteres incorrecto']);
     }
 ?>

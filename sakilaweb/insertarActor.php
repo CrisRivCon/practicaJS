@@ -3,8 +3,9 @@ require 'miDB.php';
 
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
-    $minNumCaracteres = 4;
+    define ("MINNUMCARACTERES", 4);
     $maxNumCaracteres = 10;
+    $tamanoMax = 5000;
     $error = $_FILES["file"]["error"];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $directorio = './img';
@@ -23,12 +24,12 @@ require 'miDB.php';
         //$tipo = $_FILES['file']['type'];
         $tamano = $_FILES['file']['size'];
 
-        if (!empty($nombre_img) && ($tamano <= 5000))
+        if (!empty($nombre_img) && ($tamano <= $tamanoMax))
         {
             if (in_array($tipo, $tiposImg))
             {
                 move_uploaded_file($tmp_name, "$directorio/$nombre_img");
-                if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=$minNumCaracteres && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=$minNumCaracteres && strlen($lastName)<=$maxNumCaracteres)
+                if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=MINNUMCARACTERES && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=MINNUMCARACTERES && strlen($lastName)<=$maxNumCaracteres)
                 {
                     $sql = "INSERT INTO actor (first_name, last_name, last_update, img) VALUES (:first_name,:last_name,:last_update,:img)";
                     $stmt= $myDB->prepare($sql);
