@@ -3,15 +3,12 @@ let btnBuscar = document.getElementById('buscar');
 let url;
 btnBuscar.addEventListener('click', (event)=>{
   event.preventDefault();
- 
 
   let titulo = document.getElementById('titulo').value;
   let nombre = document.getElementById('nombre').value;
 
   if(titulo!=""||nombre!=""){
     const data = new FormData(document.getElementById('form_buscar'));
-    //data.append = ('title', titulo);
-    //data.append = ('first_name', nombre);
     
     fetch('buscarPeliculas.php', {
       method: 'POST',
@@ -33,15 +30,15 @@ btnBuscar.addEventListener('click', (event)=>{
 
 
       }else{
-          if (data.length>0&&data[0]['film_id']){
+          if (data.length>0&&data[0]['film_id']&&!data[0]['actor_id']){
             let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
-        <thead class="bg-info">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Release Year</th>
-          </tr>
-        </thead>`;
+                                <thead class="bg-info">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Release Year</th>
+                                  </tr>
+                                </thead>`;
         document.getElementById('tabla').innerHTML = crearTabla;
         let cuerpoTabla = document.createElement('tbody');
         let tabla = document.querySelector('#tabla table');
@@ -53,19 +50,19 @@ btnBuscar.addEventListener('click', (event)=>{
               fila.setAttribute('id', pelicula['film_id']);
               cuerpo.append(fila);
               let columnas = `<th scope=\"row\">${pelicula['film_id']}</th>
-                            <td class=\"${pelicula['film_id']}\">${pelicula['title']}</td>
-                            <td class=\"${pelicula['film_id']}\">${pelicula['description']}</td>`;
-                fila.innerHTML = columnas;
+                              <td class=\"${pelicula['film_id']}\">${pelicula['title']}</td>
+                              <td class=\"${pelicula['film_id']}\">${pelicula['description']}</td>`;
+              fila.innerHTML = columnas;
             }
-        }else  if (data.length>0&&data[0]['actor_id']){
+        }else  if (data.length>0&&data[0]['actor_id']&&!data[0]['film_id']){
           let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
-        <thead class="bg-info">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">first_name</th>
-            <th scope="col">last_name</th>
-          </tr>
-        </thead>`;
+                              <thead class="bg-info">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">first_name</th>
+                                  <th scope="col">last_name</th>
+                                </tr>
+                              </thead>`;
         document.getElementById('tabla').innerHTML = crearTabla;
         let cuerpoTabla = document.createElement('tbody');
         let tabla = document.querySelector('#tabla table');
@@ -81,9 +78,42 @@ btnBuscar.addEventListener('click', (event)=>{
                           <td class=\"${actor['actor_id']}\">${actor['last_name']}</td>`;
               fila.innerHTML = columnas;
           }
+      }else if(data.length>0&&data[0][0]['actor_id']&&data[1][0]['film_id']){
+        let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+                              <thead class="bg-info">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">First_name / Titulo</th>
+                                  <th scope="col">Last_name / Description</th>
+                                </tr>
+                              </thead>`;
+        document.getElementById('tabla').innerHTML = crearTabla;
+        let cuerpoTabla = document.createElement('tbody');
+        let tabla = document.querySelector('#tabla table');
+        tabla.append(cuerpoTabla);
+        let cuerpo = document.querySelector('#tabla tbody');
+          for(item in data[0]){
+            let actor = data[0][item];
+            let fila= document.createElement('tr');
+            fila.setAttribute('id', actor['actor_id']);
+            cuerpo.append(fila);
+            let columnas = `<th scope=\"row\">${actor['actor_id']}</th>
+                          <td class=\"${actor['actor_id']}\">${actor['first_name']}</td>
+                          <td class=\"${actor['actor_id']}\">${actor['last_name']}</td>`;
+              fila.innerHTML = columnas;
+          }
+          for(item in data[1]){
+            let actor = data[1][item];
+            let fila= document.createElement('tr');
+            fila.setAttribute('id', actor['film_id']);
+            cuerpo.append(fila);
+            let columnas = `<th scope=\"row\">${actor['film_id']}</th>
+                          <td class=\"${actor['film_id']}\">${actor['title']}</td>
+                          <td class=\"${actor['film_id']}\">${actor['description']}</td>`;
+              fila.innerHTML = columnas;
+          }
       }
     } 
-    
     document.getElementById('form_buscar').reset();
     })
     .catch(function(err) {
