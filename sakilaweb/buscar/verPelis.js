@@ -33,7 +33,8 @@ btnBuscar.addEventListener('click', (event)=>{
 
 
       }else{
-        let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+          if (data.length>0&&data[0]['film_id']){
+            let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
         <thead class="bg-info">
           <tr>
             <th scope="col">#</th>
@@ -46,7 +47,6 @@ btnBuscar.addEventListener('click', (event)=>{
         let tabla = document.querySelector('#tabla table');
         tabla.append(cuerpoTabla);
         let cuerpo = document.querySelector('#tabla tbody');
-          if (data.length>0&&data[0]['film_id']){
             for(item in data){
               let pelicula = data[item];
               let fila= document.createElement('tr');
@@ -58,6 +58,19 @@ btnBuscar.addEventListener('click', (event)=>{
                 fila.innerHTML = columnas;
             }
         }else  if (data.length>0&&data[0]['actor_id']){
+          let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+        <thead class="bg-info">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">first_name</th>
+            <th scope="col">last_name</th>
+          </tr>
+        </thead>`;
+        document.getElementById('tabla').innerHTML = crearTabla;
+        let cuerpoTabla = document.createElement('tbody');
+        let tabla = document.querySelector('#tabla table');
+        tabla.append(cuerpoTabla);
+        let cuerpo = document.querySelector('#tabla tbody');
           for(item in data){
             let actor = data[item];
             let fila= document.createElement('tr');
