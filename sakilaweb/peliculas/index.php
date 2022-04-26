@@ -38,7 +38,7 @@ require 'miDB.php';
                   <a class="nav-link text-light" data-toggle="modal" data-target="#asignar_pelicula">Asignar Pelicula</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="">Asignar Pelicula</a>
+                  <a class="nav-link text-light" href="../buscar/buscar.php">Buscar</a>
                 </li>
               </ul>
               <!--<form class="form-inline my-2 my-lg-0">

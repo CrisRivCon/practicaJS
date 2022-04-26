@@ -3,8 +3,7 @@ let btnBuscar = document.getElementById('buscar');
 let url;
 btnBuscar.addEventListener('click', (event)=>{
   event.preventDefault();
-
-  
+ 
 
   let titulo = document.getElementById('titulo').value;
   let nombre = document.getElementById('nombre').value;
@@ -71,6 +70,8 @@ btnBuscar.addEventListener('click', (event)=>{
           }
       }
     } 
+    
+    document.getElementById('form_buscar').reset();
     })
     .catch(function(err) {
       console.log(err);
