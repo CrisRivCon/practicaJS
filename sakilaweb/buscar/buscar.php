@@ -47,8 +47,8 @@ require '../miDB.php';
         <div class="row mt-3 p-md-2" id="tabla">
             
         </div>
-        <div class="row mt-3 justify-content-md-around" id="form_buscar">
-            <form class="m-3" id="form_insertar_actor" method="post" action="" enctype="multipart/form-data">
+        <div class="row mt-3 justify-content-md-around" id="form">
+            <form class="m-3" id="form_buscar" method="post" action="" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">Buscar por nombre de actor:</label>
