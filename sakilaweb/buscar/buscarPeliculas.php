@@ -9,6 +9,7 @@ require '../miDB.php';
         $stmt->execute($parametros);
         $results= $stmt->fetchAll();
         echo json_encode($results);
+
     }else if($_POST['first_name']!==""&&$_POST['title']==""){
         $nombre = $_POST['first_name'];
         $parametros=["%$nombre%"];
@@ -17,6 +18,7 @@ require '../miDB.php';
         $stmt->execute($parametros);
         $results= $stmt->fetchAll();
         echo json_encode($results);
+        
     }else if($_POST['first_name']!==""&&$_POST['title']!==""){
         $nombre = $_POST['first_name'];
         $parametro1=["%$nombre%"];
