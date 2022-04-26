@@ -169,7 +169,6 @@ btnBuscar.addEventListener('click', (event)=>{
                   fila.innerHTML = columnas;
               }
           }else if(!data[1].length&&data[0].length&&data[0][0]['actor_id']){
-            console.log('no hay pelicula');
             let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
                                   <thead class="bg-info">
                                     <tr>
@@ -210,6 +209,42 @@ btnBuscar.addEventListener('click', (event)=>{
                               <td class=\"${actor['actor_id']}\">${actor['last_name']}</td>`;
                   fila.innerHTML = columnas;
               }
+          }else if(!data[1].length&&!data[0].length){
+            let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+                                  <thead class="bg-info">
+                                    <tr>
+                                      <th scope="col" colspan="3">Peliculas</th>
+                                    </tr>
+                                  </thead>`;
+            document.getElementById('tabla').innerHTML = crearTabla;
+            let cuerpoTabla = document.createElement('tbody');
+            let tabla = document.querySelector('#tabla table');
+            tabla.append(cuerpoTabla);
+            let cuerpo = document.querySelector('#tabla tbody');
+            let fila= document.createElement('tr');
+            cuerpo.append(fila);
+            let columnas = `<th scope=\"row\" colspan="3">No se han encontrado peliculas que coincidan</th>`;
+            fila.innerHTML = columnas;
+
+              let crearCabeceraSegunda = document.createElement('thead');
+              crearCabeceraSegunda.setAttribute('class', 'bg-info');
+              crearCabeceraSegunda.setAttribute('id', 'segunda_cabecera');
+              let crearFilaSegunda = `<tr>
+                                        <th scope="col">Actores</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                      </tr>`;
+
+            crearCabeceraSegunda.innerHTML = crearFilaSegunda;
+            let cuerpoTablaPeli = document.createElement('tbody');
+            let tablaPeli = document.querySelector('#tabla table');
+            tablaPeli.append(crearCabeceraSegunda);
+            tablaPeli.append(cuerpoTablaPeli);
+            let fila1= document.createElement('tr');
+            cuerpoTablaPeli.append(fila1);
+            
+            let columnas1 = `<th scope=\"row\" colspan="3">No se han encontrado actores que coincidan</th>`;
+            fila1.innerHTML = columnas1;
           }
     } 
     document.getElementById('form_buscar').reset();
