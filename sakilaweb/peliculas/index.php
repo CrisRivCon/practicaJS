@@ -29,7 +29,7 @@ require 'miDB.php';
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
                 <li class="nav-item active">
-                  <a class="nav-link text-light" href="../index.php">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-light" href="../index.php">Actores</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" href="./index.php">Peliculas</a>
@@ -72,7 +72,7 @@ require 'miDB.php';
                                         <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
                                           <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
                                           <a class=\"dropdown-item eliminar-actor\" id=\"".$row['film_id']."\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
-                                          <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+                                          <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Actores</a>
                                         </div>
                                       </div>
                                     </div>
@@ -139,8 +139,9 @@ require 'miDB.php';
             </div>
         </div>
         <div class="modal-footer">
+          <div id="pie_modal_asignar"></div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" name="submit" id="btn_asignar" class="btn btn-info" data-dismiss="modal">Asignar</button>
+          <button type="button" name="submit" id="btn_asignar" class="btn btn-info">Asignar</button>
         </div>
       </div>
     </div>

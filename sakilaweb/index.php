@@ -69,7 +69,7 @@ require 'miDB.php';
                                   <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
                                     <a  data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
                                       data-fancybox=\"gallery\" href=\"img/".$row['img']."\">
-                                      <img class=\"rounded\" src=\"img/".$row['img']."\" />
+                                      <img class=\"rounded\" id=\"".$row['actor_id']."\" src=\"img/".$row['img']."\" />
                                     </a>
                                   </div>
                                 </td>
@@ -201,6 +201,10 @@ require 'miDB.php';
                     <label for="validationDefault02">Last name</label>
                     <input type="text" class="form-control bg-info text-white" name="last_name" id="validationDefault02" minlength="4" maxlength="10" required>
                   </div>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input bg-info text-white" name="file" id="modal_form_img" accept="image/*" required>
+                  <label id="modal_preview" class="custom-file-label bg-info text-white preview" for="file" >Selecciona una imagen...</label>
                 </div>
               </form>
             </div>

@@ -31,9 +31,9 @@ $('#btn_asignar').on('click', (event)=>{
     .then(data =>{
       let error = data['error'];
       let success = data['success'];
+      let pie = document.getElementById('pie_modal_asignar');
       if(error){
         console.log(error);
-        let pie = document.getElementById('pie');
         if(error=='1'){
           let alert = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Algo no va bien! El método no es correcto o los campos están vacíos.</strong>
