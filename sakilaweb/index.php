@@ -5,9 +5,6 @@ require 'miDB.php';
     $data = $myDB->query("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
     $dataActor = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id LIMIT 30")->fetchAll();
     $dataFilm = $myDB->query("SELECT film_id, title FROM film ORDER BY film_id LIMIT 30")->fetchAll();
-    /*foreach ($data as $row) {
-        echo $row['first_name']."<br />\n";
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +39,6 @@ require 'miDB.php';
                   <a class="nav-link text-light" href="buscar/buscar.php">Buscar</a>
                 </li>
               </ul>
-              <!--<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-info text-white my-2 my-sm-0" type="submit">Search</button>
-              </form>-->
           </nav>
         <div class="row mt-3 p-md-2" id="tabla">
             <table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-3 m-md-2 text-white">
@@ -309,38 +302,6 @@ require 'miDB.php';
       </div>
     </div>
   </div>
-  <!-- Modal editar pelicula 
-  <div class="modal fade" id="editar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Actualizar Pelicula</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="row mt-3 justify-content-md-around" id="formulario">
-              <form class="m-3" id="form_editar_pelicula">
-                <div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <label class="text-muted" for="validationDefault01">Title</label>
-                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" required>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="validationDefault02">Release Year</label>
-                    <input type="text" class="form-control bg-info text-white" name="release_year" id="validationDefault02" required>
-                  </div>
-                </div>
-              </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="actualizar-pelicula" class="btn btn-info" data-dismiss="modal">Actualizar</button>
-        </div>
-      </div>
-    </div>-->
   </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>

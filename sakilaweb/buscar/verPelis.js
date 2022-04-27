@@ -23,7 +23,6 @@ btnBuscar.addEventListener('click', (event)=>{
       }
     })
     .then(function(data) {
-      console.log(data[0].length);
       if(!data.length){
         console.log("Está vacio");
         let infoRegistro = "<p class=\"\">No se han econtrado registros</p>";

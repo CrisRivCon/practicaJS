@@ -5,13 +5,6 @@ $lastUpdate = date("Y-m-d h:i:s", time());
 $actorId = $_POST['actor_id'];
 $filmId = $_POST['film_id'];
 
-/*     if(isset($_POST['actor_id'])&&isset($_POST['film_id'])&& $_SERVER["REQUEST_METHOD"]=="POST"){
-        $sql = "INSERT INTO film_actor (actor_id, film_id, last_update) VALUES (:actor_id,:film_id,:last_update)";
-        $stmt= $myDB->prepare($sql);
-        $stmt->execute([$_POST['actor_id'], $_POST['film_id'], $lastUpdate]);
-        //header('Location: index.php');
-    }else{echo json_encode(['status'=>404]);
-    } */
         if (isset($actorId) && isset($filmId) && $_SERVER["REQUEST_METHOD"]=="POST")  {
             
             $sql="SELECT COUNT(*) FROM actor WHERE actor_id=".$actorId."";
@@ -52,9 +45,6 @@ $filmId = $_POST['film_id'];
           } else {
             $results = array("error"=>"1");
             echo json_encode($results);
-
           }
-          /* $results = array("error"=>"1","first_name"=>$firstName, "last_name"=>$lastName);
-            echo json_encode($results); */
 
 ?>

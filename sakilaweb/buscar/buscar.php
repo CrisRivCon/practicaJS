@@ -2,12 +2,6 @@
 
 session_start();
 require '../miDB.php';
-    /*$data = $myDB->query("SELECT actor_id, first_name, last_name, img FROM actor ORDER BY actor_id DESC LIMIT 5")->fetchAll();
-    $dataActor = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id LIMIT 30")->fetchAll();
-    $dataFilm = $myDB->query("SELECT film_id, title FROM film ORDER BY film_id LIMIT 30")->fetchAll();
-    foreach ($data as $row) {
-        echo $row['first_name']."<br />\n";
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +33,6 @@ require '../miDB.php';
                   <a class="nav-link text-light" href="buscar/buscar.php">Buscar</a>
                 </li>
               </ul>
-              <!--<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-info text-white my-2 my-sm-0" type="submit">Search</button>
-              </form>-->
           </nav>
         <div class="row mt-3 p-md-2" id="tabla">
             

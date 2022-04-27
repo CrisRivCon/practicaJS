@@ -1,11 +1,11 @@
 let btnActualizar = document.getElementById("actualizar-actor");
 //Rellenar formulario con datos de la tabla
-$('.editar-actor').on('click', (event)=>{
-    let idFila = event.currentTarget.id;
+$('#editar_pelicula').on('show.bs.modal', (event)=>{
+    let idFila = event.relatedTarget.id;
     btnActualizar.setAttribute('data-id', idFila);
     for (const key in $('td.'+idFila)) {
             const element = $('td.'+idFila)[key];
-            $('#editar_actor input')[key].value = element.innerHTML;
+            $('#editar_pelicula input')[key].value = element.innerHTML;
     }
 })
 

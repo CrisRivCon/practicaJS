@@ -5,9 +5,6 @@ require 'miDB.php';
     $data = $myDB->query("SELECT film_id, title, description FROM film ORDER BY film_id DESC LIMIT 5")->fetchAll();
     $dataActor = $myDB->query("SELECT actor_id, first_name, last_name FROM actor ORDER BY actor_id LIMIT 30")->fetchAll();
     $dataFilm = $myDB->query("SELECT film_id, title FROM film ORDER BY film_id LIMIT 30")->fetchAll();
-    /*foreach ($data as $row) {
-        echo $row['first_name']."<br />\n";
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +38,6 @@ require 'miDB.php';
                   <a class="nav-link text-light" href="../buscar/buscar.php">Buscar</a>
                 </li>
               </ul>
-              <!--<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-info text-white my-2 my-sm-0" type="submit">Search</button>
-              </form>-->
           </nav>
         <div class="row mt-3 p-md-2" id="tabla">
             <table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-3 m-md-2 text-white">
@@ -70,9 +63,9 @@ require 'miDB.php';
                                           Opciones
                                         </button>
                                         <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
-                                          <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
-                                          <a class=\"dropdown-item eliminar-actor\" id=\"".$row['film_id']."\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
-                                          <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Actores</a>
+                                          <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#editar_pelicula\">Editar</a>
+                                          <a class=\"dropdown-item eliminar-actor\" id=\"".$row['film_id']."\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_pelicula\">Eliminar</a>
+                                          <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"".$row['film_id']."\" data-toggle=\"modal\" data-target=\"#ver_actores\">Ver Actores</a>
                                         </div>
                                       </div>
                                     </div>
@@ -147,7 +140,7 @@ require 'miDB.php';
     </div>
   </div>
   <!-- Modal editar pelicula -->
-  <div class="modal fade" id="editar_actor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -180,7 +173,7 @@ require 'miDB.php';
     </div>
   </div>
   <!-- Modal eliminar actor -->
-  <div class="modal fade" id="eliminar_actor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="eliminar_pelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -200,7 +193,7 @@ require 'miDB.php';
     </div>
   </div>
   <!-- Modal ver actores -->
-  <div class="modal fade" id="ver_peliculas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="ver_actores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -220,28 +213,6 @@ require 'miDB.php';
                   </tr>
                 </thead>
                 <tbody>
-               <?php
-                    /* foreach ($_SESSION['listaPeliculas'] as $pelicula) {
-                      echo "<tr>
-                                <th scope=\"row\">".$pelicula['film_id']."</th>
-                                <td class=\"".$pelicula['film_id']."\">".$pelicula['title']."</td>
-                                <td class=\"".$pelicula['film_id']."\">".$pelicula['release_year']."</td>
-                                <td class=\"text-center\">
-                                    <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
-                                      <div class=\"btn-group\" role=\"group\">
-                                        <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">
-                                          Opciones
-                                        </button>
-                                        <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
-                                          <a class=\"dropdown-item editar-pelicula\" href=\"#\" id=\"".$pelicula['film_id']."\" data-toggle=\"modal\" data-target=\"#editar_pelicula\">Editar</a>
-                                          <a class=\"dropdown-item eliminar-pelicula\" id=\"".$pelicula['film_id']."\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_pelicula\">Eliminar</a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </td>
-                              </tr>";
-                      } */
-                  ?> 
                 </tbody>
               </table>
         </div>

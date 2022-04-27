@@ -103,12 +103,6 @@ btnInsertar.addEventListener("click", event=>{
           fil.innerHTML = nuevaFila;
           cuerpo.prepend(fil);
 
-          let btnEliminar = document.getElementById("eliminar-actor");
-
-          $('.eliminar-actor').on('click', (event)=>{
-              let idFila = event.currentTarget.id;
-              btnEliminar.setAttribute('data-id', idFila);
-          })
           formInsert.reset();
           preview.innerHTML = 'Selecciona una imagen...';
 
@@ -123,30 +117,3 @@ btnInsertar.addEventListener("click", event=>{
       });
   }
 })
-
-/*   var actorId = document.getElementById("actor").value;
-  var filmId = document.getElementById("film").value;
-
-  data.append('actor_id', actorId);
-  data.append('film_id', filmId);
-  console.log(data);
-
-  fetch(url, {
-    method: 'POST',
-    type: 'JSON',
-    body: data,
-  })
-  .then(response=> {
-    console.log(response);
-    if(response.status==200) {
-        return response.json();
-    } else {
-        throw "Error en la llamada AJAX";
-    }
-  })
-  .then(data => console.log(data))
-  .catch(function(err) {
-    console.log(err);
-  });
-});
- */

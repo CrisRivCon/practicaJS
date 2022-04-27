@@ -1,7 +1,7 @@
 let btnEliminar = document.getElementById("eliminar-actor");
 
-$('.eliminar-actor').on('click', (event)=>{
-    let idFila = event.currentTarget.id;
+$('#eliminar_pelicula').on('show.bs.modal', (event)=>{
+    let idFila = event.relatedTarget.id;
     btnEliminar.setAttribute('data-id', idFila);
 })
 

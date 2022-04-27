@@ -29,25 +29,55 @@ require 'miDB.php';
         $nombre_img = $_FILES["file"]["name"];
         $tamano = $_FILES['file']['size'];
 
-        if (!empty($nombre_img) && ($tamano <= $tamanoMax))
-        {
-            if (in_array($tipo, $tiposImg))
-            {
-                move_uploaded_file($tmp_name, "$directorio/$nombre_img");
-                if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=MINNUMCARACTERES && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=MINNUMCARACTERES && strlen($lastName)<=$maxNumCaracteres)
-                {
-                    $sql = "UPDATE actor SET first_name=?, last_name=?, last_update=?, img=? WHERE actor_id=?";
-                    $stmt= $myDB->prepare($sql);
-                    $stmt->execute([$firstName, $lastName, $lastUpdate, $nombre_img, $id]);
-                    $results = array("first_name"=>$firstName, "last_name"=>$lastName, "img"=>$nombre_img);
-                    echo json_encode($results);
+        if (!empty($nombre_img)){
 
-                } else {
-                    echo json_encode(['numero de caracteres incorrecto']);
+            if($tamano <= $tamanoMax){
+
+                if (in_array($tipo, $tiposImg)){
+
+                    move_uploaded_file($tmp_name, "$directorio/$nombre_img");
+                    
+                    if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=MINNUMCARACTERES && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=MINNUMCARACTERES && strlen($lastName)<=$maxNumCaracteres){
+                        
+                        $sql = "UPDATE actor SET first_name=?, last_name=?, last_update=?, img=? WHERE actor_id=?";
+                        $stmt= $myDB->prepare($sql);
+                        $stmt->execute([$firstName, $lastName, $lastUpdate, $nombre_img, $id]);
+                        $results = array("first_name"=>$firstName, "last_name"=>$lastName, "img"=>$nombre_img);
+                        echo json_encode($results);
+
+                    }else{
+                        echo json_encode(['numero de caracteres incorrecto']);
+                    }
+
+                }else{
+                    echo "No se puede subir una imagen con ese formato ";
                 }
-            }else{echo "No se puede subir una imagen con ese formato ";}
+            }else{
+                echo "La imagen es demasiado grande ";
+            }
         }else{
-            if($nombre_img == !NULL) echo "La imagen es demasiado grande "; 
+            if($nombre_img == !NULL); 
+            if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=MINNUMCARACTERES && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=MINNUMCARACTERES && strlen($lastName)<=$maxNumCaracteres){
+                        
+                $sql = "UPDATE actor SET first_name=?, last_name=?, last_update=? WHERE actor_id=?";
+                $stmt= $myDB->prepare($sql);
+                $stmt->execute([$firstName, $lastName, $lastUpdate, $id]);
+                $results = array("first_name"=>$firstName, "last_name"=>$lastName);
+                echo json_encode($results);
+
+            }else{
+                echo json_encode(['numero de caracteres incorrecto']);
+            }
         }
-    };
+    }if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=MINNUMCARACTERES && strlen($firstName)<=$maxNumCaracteres && strlen($lastName)>=MINNUMCARACTERES && strlen($lastName)<=$maxNumCaracteres){
+                        
+        $sql = "UPDATE actor SET first_name=?, last_name=?, last_update=? WHERE actor_id=?";
+        $stmt= $myDB->prepare($sql);
+        $stmt->execute([$firstName, $lastName, $lastUpdate, $id]);
+        $results = array("first_name"=>$firstName, "last_name"=>$lastName);
+        echo json_encode($results);
+
+    }else{
+        echo json_encode(['numero de caracteres incorrecto']);
+    }
 ?>

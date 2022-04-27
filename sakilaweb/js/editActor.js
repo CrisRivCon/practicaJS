@@ -7,8 +7,8 @@ let modalImagen = modalInputFile.files;
 
 
 //Rellenar formulario con datos de la tabla
-$('.editar-actor').on('click', (event)=>{
-    let idFila = event.currentTarget.id;
+$('#editar_actor').on('show.bs.modal', (event)=>{
+    let idFila = event.relatedTarget.id;
     btnActualizar.setAttribute('data-id', idFila);
 
     for (const key in $('td.'+idFila)) {
@@ -40,27 +40,51 @@ modalInputFile.addEventListener('change', event =>{
 //Enviar los datos para insertarlos en la BD
 btnActualizar.addEventListener("click", event=>{
     event.preventDefault();
-    if(validFileType(modalImagen[0])&&modalImagen[0].size<tamanoMax){
+    if(modalImagen[0]){
+
+        if(validFileType(modalImagen[0])&&modalImagen[0].size<tamanoMax){
+            const data = new FormData(document.getElementById("form_editar_actor"));
+            let idActor = btnActualizar.dataset.id;
+            data.append('actor_id', idActor);
+            data.append('file', modalImagen);
+
+            fetch('actualizarActor.php', {
+                method: 'POST',
+                type: 'JSON',
+                body: data
+            })
+            .then(response =>{ return response.json()})
+            .then(response => {
+                let fila = Array.from(document.getElementsByClassName(idActor));
+                fila[0].textContent = response['first_name'];
+                fila[1].textContent = response['last_name'];
+                $('img#'+idActor).attr('src', 'img/'+response['img']) 
+            })
+
+            .catch(function(err) {
+                console.log(err);
+            });
+            document.getElementById("form_editar_actor").reset();
+        }
+    }else {
+
         const data = new FormData(document.getElementById("form_editar_actor"));
         let idActor = btnActualizar.dataset.id;
         data.append('actor_id', idActor);
-        data.append('file', modalImagen);
 
         fetch('actualizarActor.php', {
             method: 'POST',
             type: 'JSON',
             body: data
         })
-        .then(response =>{ return response.json()})
+        .then(response =>{return response.json()})
         .then(response => {
             let fila = Array.from(document.getElementsByClassName(idActor));
                     fila[0].textContent = response['first_name'];
                     fila[1].textContent = response['last_name'];
-                    $('img#'+idActor).attr('src', 'img/'+response['img']) 
         })
-
         .catch(function(err) {
             console.log(err);
-     });
+        });
     }
 })

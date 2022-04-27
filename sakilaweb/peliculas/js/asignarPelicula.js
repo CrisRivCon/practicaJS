@@ -7,7 +7,6 @@ $('#btn_asignar').on('click', (event)=>{
   let filmVal = isNaN(filmId);
 
   if(actorVal==false&& filmVal==false){
-    console.log('Son numeros');
 
     const url = 'asignarPelicula.php';
     const data = new FormData();
@@ -21,7 +20,6 @@ $('#btn_asignar').on('click', (event)=>{
       body: data,
     })
     .then(response=> {
-      console.log(response);
       if(response.status==200) {
           return response.json();
       } else {
@@ -33,7 +31,6 @@ $('#btn_asignar').on('click', (event)=>{
       let success = data['success'];
       let pie = document.getElementById('pie_modal_asignar');
       if(error){
-        console.log(error);
         if(error=='1'){
           let alert = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Algo no va bien! El método no es correcto o los campos están vacíos.</strong>
@@ -72,5 +69,5 @@ $('#btn_asignar').on('click', (event)=>{
     .catch(function(err) {
       console.log(err);
     });
-  }else console.log('No son numeros');
+  }else console.log('La asignacion no es valida');
 });

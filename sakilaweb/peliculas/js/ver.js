@@ -1,6 +1,6 @@
 
-$('.ver-peliculas').on('click', (event)=>{
-  let idFila = event.currentTarget.id;
+$('#ver_actores').on('show.bs.modal', (event)=>{
+  let idFila = event.relatedTarget.id;
 //console.log('id fila: '+idFila);
 var url = 'ver.php';
 const data = new FormData();
@@ -21,7 +21,7 @@ fetch(url, {
   if(!data.length){
     console.log("Está vacio");
     let infoRegistro = "<p class=\"\">No se han econtrado registros</p>";
-    document.querySelector('#ver_peliculas .modal-body').innerHTML = infoRegistro;
+    document.querySelector('#ver_actores .modal-body').innerHTML = infoRegistro;
 
 
   }else{
@@ -35,11 +35,11 @@ fetch(url, {
       </tr>
     </thead>
     <tbody>`;
-    document.querySelector('#ver_peliculas .modal-body').innerHTML = crearTabla;
+    document.querySelector('#ver_actores .modal-body').innerHTML = crearTabla;
     let cuerpoTabla = document.createElement('tbody');
-    let tabla = document.querySelector('#ver_peliculas table');
+    let tabla = document.querySelector('#ver_actores table');
     tabla.append(cuerpoTabla);
-    let cuerpo = document.querySelector('#ver_peliculas tbody');
+    let cuerpo = document.querySelector('#ver_actores tbody');
 
       for(item in data){
         //console.log(data[item]);
@@ -76,8 +76,8 @@ fetch(url, {
 });
 });
 
-$('#ver_peliculas').on('hidden.bs.modal', function (event) {
-  let cuerpo = document.querySelector('#ver_peliculas tbody');
+$('#ver_actores').on('hidden.bs.modal', function (event) {
+  let cuerpo = document.querySelector('#ver_actores tbody');
   if(cuerpo){cuerpo.remove()}
 })
 

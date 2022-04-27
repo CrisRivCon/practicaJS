@@ -9,7 +9,7 @@
 
 btnInsertar.addEventListener("click", event=>{
   event.preventDefault();
-    const data = new FormData(document.getElementById('form_insertar_actor'));
+    const data = new FormData(formInsert);
     //data.append('file', imagen);
 
     fetch(url, {
@@ -40,9 +40,9 @@ btnInsertar.addEventListener("click", event=>{
                                       Opciones
                                     </button>
                                     <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
-                                      <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
-                                      <a class=\"dropdown-item eliminar-actor\" id=\"${data['film_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
-                                      <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+                                      <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#editar_pelicula\">Editar</a>
+                                      <a class=\"dropdown-item eliminar-actor\" id=\"${data['film_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_pelicula\">Eliminar</a>
+                                      <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['film_id']}\" data-toggle=\"modal\" data-target=\"#ver_actores\">Ver Actores</a>
                                     </div>
                                   </div>
                                 </div>
@@ -63,5 +63,5 @@ btnInsertar.addEventListener("click", event=>{
     .catch(function(err) {
         console.log(err);
     });
-
+    formInsert.reset();
 })
