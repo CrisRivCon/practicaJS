@@ -30,7 +30,7 @@ require '../miDB.php';
                   <a class="nav-link text-light" href="../peliculas/index.php">Peliculas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="buscar/buscar.php">Buscar</a>
+                  <a class="nav-link text-light" href="buscar.php">Buscar</a>
                 </li>
               </ul>
           </nav>

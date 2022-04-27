@@ -52,68 +52,74 @@
 
 btnInsertar.addEventListener("click", event=>{
   event.preventDefault();
-  if(validFileType(imagen[0])&&imagen[0].size<tamanoMax){
-    const data = new FormData(document.getElementById('form_insertar_actor'));
-    data.append('file', imagen);
+  if(imagen[0]){
+    if(validFileType(imagen[0])&&imagen[0].size<tamanoMax){
+      const data = new FormData(document.getElementById('form_insertar_actor'));
+      data.append('file', imagen);
 
-      fetch(url, {
-          method: 'POST',
-          type: 'JSON',
-          body: data
-      })
-      .then(function(response) {
-        if(response.status==200) {
-            return response.json();
-        } else {
-            throw "Error en la llamada AJAX";
-        }
-      })
-      .then(data => {
-        if(data['actor_id']){
-          let id = data['actor_id'];
-          let cuerpo = document.getElementById('cuerpo_tabla');
-          let fil = document.createElement('tr');
-          fil.setAttribute('id', 'f'+id);
-          let nuevaFila = `<th scope=\"row\">${data['actor_id']}</th>
-                              <td class=\"${data['actor_id']}\">${data['first_name']}</td>
-                              <td class=\"${data['actor_id']}\">${data['last_name']}</td>
-                              <td class=\"${data['actor_id']} text-center\">
-                                  <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
-                                    <a data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
-                                      data-fancybox=\"gallery\" href=\"img/${data['img']}\">
-                                      <img class=\"rounded\" id=\"${data['actor_id']}\" src=\"img/${data['img']}\"/>
-                                  </a>
-                                  </div>
-                              </td>
-                              <td class=\"text-center\">
-                                  <div class=z\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
-                                    <div class=\"btn-group\" role=\"group\">
-                                      <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">
-                                        Opciones
-                                      </button>
-                                      <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
-                                        <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
-                                        <a class=\"dropdown-item eliminar-actor\" id=\"${data['actor_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
-                                        <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+        fetch(url, {
+            method: 'POST',
+            type: 'JSON',
+            body: data
+        })
+        .then(function(response) {
+          if(response.status==200) {
+              return response.json();
+          } else {
+              throw "Error en la llamada AJAX";
+          }
+        })
+        .then(data => {
+          if(data['actor_id']){
+            let id = data['actor_id'];
+            let cuerpo = document.getElementById('cuerpo_tabla');
+            let fil = document.createElement('tr');
+            fil.setAttribute('id', 'f'+id);
+            let nuevaFila = `<th scope=\"row\">${data['actor_id']}</th>
+                                <td class=\"${data['actor_id']}\">${data['first_name']}</td>
+                                <td class=\"${data['actor_id']}\">${data['last_name']}</td>
+                                <td class=\"${data['actor_id']} text-center\">
+                                    <div class=\"flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6\">
+                                      <a data-caption=\"Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. \"
+                                        data-fancybox=\"gallery\" href=\"img/${data['img']}\">
+                                        <img class=\"rounded\" id=\"${data['actor_id']}\" src=\"img/${data['img']}\"/>
+                                    </a>
+                                    </div>
+                                </td>
+                                <td class=\"text-center\">
+                                    <div class=z\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">
+                                      <div class=\"btn-group\" role=\"group\">
+                                        <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">
+                                          Opciones
+                                        </button>
+                                        <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">
+                                          <a class=\"dropdown-item editar-actor\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#editar_actor\">Editar</a>
+                                          <a class=\"dropdown-item eliminar-actor\" id=\"${data['actor_id']}\" href=\"#\" data-toggle=\"modal\" data-target=\"#eliminar_actor\">Eliminar</a>
+                                          <a class=\"dropdown-item ver-peliculas\" href=\"#\" id=\"${data['actor_id']}\" data-toggle=\"modal\" data-target=\"#ver_peliculas\">Ver Peliculas</a>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                              </td>
-                            </tr>`;
-          fil.innerHTML = nuevaFila;
-          cuerpo.prepend(fil);
+                                </td>
+                              </tr>`;
+            fil.innerHTML = nuevaFila;
+            cuerpo.prepend(fil);
 
-          formInsert.reset();
-          preview.innerHTML = 'Selecciona una imagen...';
+            formInsert.reset();
+            preview.innerHTML = 'Selecciona una imagen...';
 
-        }else{
-          console.log(data);
-          formInsert.reset();
-          preview.innerHTML = 'Selecciona una imagen...';
-        }
-      })
-      .catch(function(err) {
-          console.log(err);
-      });
+          }else{
+            console.log(data);
+            formInsert.reset();
+            preview.innerHTML = 'Selecciona una imagen...';
+          }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    }else{
+      console.log('El tamaño de la imagen o el tipo no son correctos');
+    }
+  }else{
+    console.log('No hay imagen');
   }
 })
