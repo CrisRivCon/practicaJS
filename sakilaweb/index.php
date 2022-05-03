@@ -40,8 +40,8 @@ require 'miDB.php';
                 </li>
               </ul>
           </nav>
-        <div class="row mt-3 p-md-2" id="tabla">
-            <table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-3 m-md-2 text-white">
+        <div class="row mt-3 p-md-2 table-responsive-md" id="tabla">
+            <table class="table table-hover table-striped  table-info p-md-3 m-3 m-md-2 text-white">
                 <thead class="bg-info">
                   <tr>
                     <th scope="col">#</th>

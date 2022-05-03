@@ -30,7 +30,7 @@ btnBuscar.addEventListener('click', (event)=>{
 
       }else{
           if (data.length>0&&data[0]['film_id']&&!data[0]['actor_id']){
-            let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+            let crearTabla = `<table class="table table-hover table-striped  table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
                                 <thead class="bg-info">
                                   <tr>
                                     <th scope="col">#</th>
@@ -54,7 +54,7 @@ btnBuscar.addEventListener('click', (event)=>{
               fila.innerHTML = columnas;
             }
           }else  if (data.length>0&&data[0]['actor_id']&&!data[0]['film_id']){
-            let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
+            let crearTabla = `<table class="table table-hover table-striped  table-info p-md-3 m-md-2 text-white" id="tabla_buscar">
                                 <thead class="bg-info">
                                   <tr>
                                     <th scope="col">#</th>

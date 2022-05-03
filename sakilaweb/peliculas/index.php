@@ -155,11 +155,11 @@ require 'miDB.php';
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label class="text-muted" for="validationDefault01">Title</label>
-                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" minlength="4" maxlength="10" required>
+                    <input type="text" class="form-control bg-info text-white" name="title" id="validationDefault01" minlength="4" maxlength="100" required>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault02">Description</label>
-                    <input type="text" class="form-control bg-info text-white" name="description" id="validationDefault02" minlength="4" maxlength="10" required>
+                    <input type="text" class="form-control bg-info text-white" name="description" id="validationDefault02" minlength="4" maxlength="200" required>
                   </div>
                 </div>
               </form>
@@ -202,8 +202,8 @@ require 'miDB.php';
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-            <table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white">
+        <div class="modal-body  table-responsive">
+            <table class="table table-hover table-striped table-info p-md-3 m-md-2 text-white">
                 <thead class="bg-info">
                   <tr>
                     <th scope="col">#</th>

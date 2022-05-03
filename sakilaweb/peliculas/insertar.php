@@ -5,7 +5,7 @@ require 'miDB.php';
     $lastName = $_POST['description'];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $minCaracteres = 4;
-    $maxCaracteres = 20;
+    $maxCaracteres = 200;
 
     if($_SERVER["REQUEST_METHOD"]=="POST"&& strlen($firstName)>=$minCaracteres && strlen($firstName)<=$maxCaracteres && strlen($lastName)>=$minCaracteres && strlen($lastName)<=$maxCaracteres){
         $sql = "INSERT INTO film (title, description, last_update) VALUES (:title,:description,:last_update)";

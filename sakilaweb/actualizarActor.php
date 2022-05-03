@@ -16,7 +16,7 @@ require 'miDB.php';
     $id = $_POST['actor_id'];
     define ("MINNUMCARACTERES", 4);
     $maxNumCaracteres = 10;
-    $tamanoMax = 5000;
+    $tamanoMax = 100000;
     $error = $_FILES["file"]["error"];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $directorio = './img';

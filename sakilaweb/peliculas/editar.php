@@ -2,19 +2,18 @@
 session_start();
 require 'miDB.php';
 
-    $firstName = $_POST['title'];
-    $lastName = $_POST['description'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $id = $_POST['film_id'];
     $numMinCaracteres = 4;
-    $numMaxCaracteres = 10;
+    $numMaxCaracteres = 200;
     
-
-    if(strlen($firstName)>=$numMinCaracteres && strlen($firstName)<=$numMaxCaracteres){
+    if(strlen($title)>$numMinCaracteres && strlen($title)<$numMaxCaracteres){
         $sql = "UPDATE film SET title=?, description=?, last_update=? WHERE film_id=?";
         $stmt= $myDB->prepare($sql);
-        $stmt->execute([$firstName, $lastName, $lastUpdate, $id]);
-        $results = array("title"=>$firstName, "description"=>$lastName);
+        $stmt->execute([$title, $description, $lastUpdate, $id]);
+        $results = array("title"=>$title, "description"=>$description);
         echo json_encode($results);
     }
 ?>

@@ -5,7 +5,7 @@ require 'miDB.php';
     $lastName = $_POST['last_name'];
     define ("MINNUMCARACTERES", 4);
     define ("MAXNUMCARACTERES", 10);
-    define ("TAMANOMAX", 5000);
+    define ("TAMANOMAX", 100000);
     $error = $_FILES["file"]["error"];
     $lastUpdate = date("Y-m-d h:i:s", time());
     $directorio = './img';

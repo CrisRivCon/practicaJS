@@ -25,7 +25,7 @@ fetch(url, {
 
 
   }else{
-    let crearTabla = `<table class="table table-hover table-striped table-responsive-md table-info p-md-3 m-md-2 text-white">
+    let crearTabla = `<table class="table table-hover table-striped table-info p-md-3 m-md-2 text-white">
     <thead class="bg-info">
       <tr>
         <th scope="col">#</th>

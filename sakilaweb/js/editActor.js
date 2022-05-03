@@ -17,9 +17,11 @@ $('#editar_actor').on('show.bs.modal', (event)=>{
             document.querySelectorAll('#editar_actor input')[key].value = element.innerHTML;
         }else if(key == inputImg){
             const element = $('img#'+idFila).attr('src') ;
-            let regExp = /\/([^/]+)*/; 
-            let text =  regExp.exec(element);
-           modalPreview.innerHTML= text[1];
+            if(element !== "img/"){
+                let regExp = /\/([^/]+)*/; 
+                let text =  regExp.exec(element);
+                modalPreview.innerHTML= text[1];
+            }else{modalPreview.innerHTML= "No tiene imagen";}
 
         }
     }

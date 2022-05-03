@@ -6,7 +6,7 @@
   let preview = document.getElementById('preview');
   let btnInsertar = document.getElementById('insertar_actor');
   let imagen = inputFile.files;
-  let tamanoMax = 5000;
+  let tamanoMax = 100000;
   let minNumCaracteres = 4;
   let maxNumCaracteres = 10;
 

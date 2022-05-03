@@ -54,7 +54,7 @@ require '../miDB.php';
                 </div>
             </form>
         </div>
-        <div class="row mt-3" id="pie">
+        <div class="row mt-3 table-responsive" id="pie">
 
         </div> 
 

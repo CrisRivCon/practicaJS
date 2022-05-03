@@ -11,6 +11,7 @@ $('#editar_pelicula').on('show.bs.modal', (event)=>{
 
 //Enviar los datos para insertarlos en la BD
 btnActualizar.addEventListener("click", event=>{
+    event.preventDefault();
     const data = new FormData(document.getElementById("form_editar_actor"));
     let idActor = btnActualizar.dataset.id;
     data.append('film_id', idActor);
